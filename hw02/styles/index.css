@@ -149,6 +149,12 @@ button:hover {
   color: rgb(36, 74, 141);
 }
 
+.sportsSvg {
+  width: 100%;
+  height: 300px;
+  margin-top: 50px;
+}
+
 @media screen and (max-width: 620px) {
   .bottom-navigation {
     display: flex;
@@ -165,6 +171,13 @@ button:hover {
   }
   .main {
     font-size: 12px;
+  }
+  .main h1 {
+    text-align: center;
+  }
+  .sportsSvg {
+    width: 100%;
+    height: auto;
   }
 }
 .dropbtn {
