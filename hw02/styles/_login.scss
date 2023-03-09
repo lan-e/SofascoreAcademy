@@ -17,16 +17,26 @@
   form {
     display: flex;
     flex-direction: column;
-    input {
+    input,
+    textarea {
       margin-bottom: 10px;
+      border-radius: 5px;
     }
   }
 }
-.img {
+.backToHome {
   @include flex();
+  flex-direction: column;
   img {
     height: auto;
     width: 100px;
+  }
+  div {
+    bottom: 0px;
+    position: fixed;
+    padding: 50px;
+    color: $blue;
+    text-align: center;
   }
 }
 #submit {
@@ -42,7 +52,7 @@
   }
 }
 @media screen and (max-width: 620px) {
-  .img {
+  .backToHome {
     display: none;
   }
   .form {
