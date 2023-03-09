@@ -1,0 +1,45 @@
+body {
+  box-sizing: border-box;
+  margin: 0;
+  background-color: rgba(35, 41, 53, 0.05);
+  font-family: Montserrat, Tahoma, Helvetica, Arial, sans-serif;
+}
+a {
+  text-decoration: none;
+  color: $primary;
+}
+button {
+  background: none;
+  color: $primary;
+  font-size: 20px;
+  font-weight: 600;
+  padding-left: 30px;
+  border: 0;
+  opacity: 0.4;
+  cursor: pointer;
+  &:hover {
+    opacity: 1;
+  }
+}
+.main {
+  margin: 50px;
+  color: $blue;
+}
+@media screen and (max-width: 620px) {
+  .bottom-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: $gradient;
+    width: 100vw;
+    height: 50px;
+    bottom: 0;
+    position: fixed;
+    i {
+      font-size: 24px;
+    }
+  }
+  .main {
+    font-size: 12px;
+  }
+}

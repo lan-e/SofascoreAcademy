@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+    <link rel="stylesheet" href="styles/index.css">
+    <link rel="icon" type="image/x-icon" href="img/sofaLogo.svg">
+    <title>Hw02</title>
+</head>
+
+<body>
+    <div class="login-container">
+        <div class="form">
+            <form method="post" action="/success">
+                <input type="text" id="email" name="email" placeholder="test@test.com" required>
+                <input type="password" id="pass" name="password" placeholder="*******" required>
+                <label for="msg">Your message:</label><textarea type="text" id="msg" name="text"></textarea>
+                <span>
+                    <label for="remember">Remember me</label>
+                    <input type="checkbox" name="remember" id="remember">
+                </span>
+                <input type="submit" id="submit" name="submit" value="Send">
+            </form>
+        </div>
+        <div class="img"><a href="/"><img src="img/sofaLogo.svg"></a></div>
+    </div>
+    <div class="bottom-navigation">
+        <div class="dropup">
+            <button><a href=""><i class="fa-solid fa-basketball dropupbtn"></i></a></button>
+            <div class="dropup-content">
+                <a href="">Badminton</a>
+                <a href="">Esports</a>
+                <a href="">Handball</a>
+                <a href="">Basketball</a>
+                <a href="">Football</a>
+            </div>
+        </div>
+        <button><a href="/"><i class="fa-solid fa-house"></i></a></button>
+        <div class="dropup">
+            <button><i class="fa-solid fa-bars dropupbtn"></i></button>
+            <div class="dropup-content">
+                <a href="login.html"><i class="fa-solid fa-user"></i></a>
+                <a href="">Settings</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
