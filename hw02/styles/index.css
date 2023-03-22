@@ -5,8 +5,7 @@
   height: 24px;
   margin-top: 10px;
 }
-
-.slider {
+.switch .slider {
   position: absolute;
   cursor: pointer;
   top: 0;
@@ -15,7 +14,7 @@
   bottom: 0;
   background-color: #ccc;
 }
-.slider:before {
+.switch .slider:before {
   position: absolute;
   content: "";
   height: 16px;
@@ -25,18 +24,16 @@
   background-color: #fff;
   transition: 0.5s;
 }
-.slider.round {
+.switch .slider.round {
   border-radius: 34px;
 }
-.slider.round:before {
+.switch .slider.round:before {
   border-radius: 50%;
 }
-
-input:checked + .slider {
+.switch input:checked + .slider {
   background-color: rgb(55, 77, 245);
 }
-
-input:checked + .slider:before {
+.switch input:checked + .slider:before {
   transform: translateX(16px);
 }
 
@@ -221,11 +218,7 @@ button:hover {
   opacity: 1;
 }
 
-.dropupbtn {
-  margin-top: 12px;
-}
-
-.dropup-content {
+.bottom-navigation .dropup-content {
   bottom: 50px;
   visibility: collapse;
   position: absolute;
@@ -235,25 +228,30 @@ button:hover {
   font-weight: 600;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 }
-.dropup-content a {
+.bottom-navigation .dropup-content a {
   padding: 12px 16px;
   display: block;
   opacity: 0.4;
 }
-.dropup-content a:hover {
-  background-color: #aaa;
-  opacity: 1;
+.bottom-navigation .dropup-content a {
+  padding: 12px 16px;
+  display: block;
+  opacity: 0.4;
 }
-
-.dropup {
-  height: 100%;
-  display: inline-block;
+.bottom-navigation .radio {
+  display: none;
 }
-.dropup:hover .dropup-content {
+.bottom-navigation label {
+  padding: 20px;
+  cursor: pointer;
+  color: white;
+  transition: color 0.2s ease-in-out;
+}
+.bottom-navigation input:checked + label {
+  color: orange;
+}
+.bottom-navigation input:checked ~ .dropup-content {
   visibility: visible;
   max-height: 250px;
   transition: max-height 0.2s;
-}
-.dropup:hover .dropupbtn {
-  opacity: 1;
 }/*# sourceMappingURL=index.css.map */
