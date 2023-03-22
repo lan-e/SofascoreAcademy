@@ -10,10 +10,6 @@
     padding: 12px 16px;
     display: block;
     opacity: 0.4;
-    &:hover {
-      background-color: $hover;
-      opacity: 1;
-    }
   }
 }
 .dropbtn {
@@ -21,7 +17,12 @@
 }
 .dropdown-content {
   @include content();
+  a:hover {
+    background-color: $hover;
+    opacity: 1;
+  }
 }
+
 .dropdown {
   display: inline-block;
   &:hover {
@@ -35,24 +36,32 @@
     }
   }
 }
-.dropupbtn {
-  margin-top: 12px;
-}
-.dropup-content {
-  bottom: 50px;
-  @include content();
-}
-.dropup {
-  height: 100%;
-  display: inline-block;
-  &:hover {
-    .dropup-content {
-      visibility: visible;
-      max-height: 250px;
-      transition: max-height 0.2s;
+
+.bottom-navigation {
+  .dropup-content {
+    bottom: 50px;
+    @include content();
+    a {
+      padding: 12px 16px;
+      display: block;
+      opacity: 0.4;
     }
-    .dropupbtn {
-      opacity: 1;
-    }
+  }
+  .radio {
+    display: none;
+  }
+  label {
+    padding: 20px;
+    cursor: pointer;
+    color: white;
+    transition: color 0.2s ease-in-out;
+  }
+  input:checked + label {
+    color: orange;
+  }
+  input:checked ~ .dropup-content {
+    visibility: visible;
+    max-height: 250px;
+    transition: max-height 0.2s;
   }
 }

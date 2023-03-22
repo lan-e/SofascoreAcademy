@@ -53,8 +53,10 @@
         <!-- source: https://www.nytimes.com/interactive/2020/07/21/sports/coronavirus-changes-baseball-nba-nfl.html -->
     </div>
     <div class="bottom-navigation">
-        <div class="dropup">
-            <button><a href=""><i class="fa-solid fa-basketball dropupbtn"></i></a></button>
+
+        <div>
+            <input type="radio" id="sports" class="radio" name="radio">
+            <label for="sports"><i class="fa-solid fa-basketball"></i></label>
             <div class="dropup-content">
                 <a href="">More...</a>
                 <a href="">Esports</a>
@@ -63,9 +65,13 @@
                 <a href="">Football</a>
             </div>
         </div>
-        <button><a href="/hw02/"><i class="fa-solid fa-house"></i></a></button>
-        <div class="dropup">
-            <button><i class="fa-solid fa-bars dropupbtn"></i></button>
+
+        <input type="radio" id="home" class="radio" name="radio" checked>
+        <label for="home"><i class="fa-solid fa-house"></i></label>
+        <div>
+            <input type="radio" id="bars" name="radio" class="radio">
+            <label for="bars"><i class="fa-solid fa-bars"></i></label>
+
             <div class="dropup-content">
                 <a href="login.html"><i class="fa-solid fa-user"></i></a>
                 <a href="">Settings</a>
