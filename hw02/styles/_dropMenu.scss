@@ -1,0 +1,67 @@
+@mixin content() {
+  visibility: collapse;
+  position: absolute;
+  background-color: #555;
+  min-width: 120px;
+  max-height: 0px;
+  font-weight: 600;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  a {
+    padding: 12px 16px;
+    display: block;
+    opacity: 0.4;
+  }
+}
+.dropbtn {
+  padding: 18px 0 18px 0;
+}
+.dropdown-content {
+  @include content();
+  a:hover {
+    background-color: $hover;
+    opacity: 1;
+  }
+}
+
+.dropdown {
+  display: inline-block;
+  &:hover {
+    .dropdown-content {
+      visibility: visible;
+      max-height: 250px;
+      transition: max-height 0.2s;
+    }
+    .dropbtn {
+      opacity: 1;
+    }
+  }
+}
+
+.bottom-navigation {
+  .dropup-content {
+    bottom: 50px;
+    @include content();
+    a {
+      padding: 12px 16px;
+      display: block;
+      opacity: 0.4;
+    }
+  }
+  .radio {
+    display: none;
+  }
+  label {
+    padding: 20px;
+    cursor: pointer;
+    color: white;
+    transition: color 0.2s ease-in-out;
+  }
+  input:checked + label {
+    color: orange;
+  }
+  input:checked ~ .dropup-content {
+    visibility: visible;
+    max-height: 250px;
+    transition: max-height 0.2s;
+  }
+}

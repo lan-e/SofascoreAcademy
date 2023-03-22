@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+    <link rel="stylesheet" href="styles/index.css">
+    <link rel="icon" type="image/x-icon" href="img/sofaLogo.svg">
+    <title>Hw02</title>
+</head>
+
+<body>
+    <div class="login-container">
+        <div class="form">
+            <form method="post" action="/success">
+                <input type="email" id="email" name="email" placeholder="your@gmail.com" required>
+                <input type="password" id="pass" name="password" placeholder="************" required>
+                <label for="msg">Your message:</label><textarea type="text" id="msg" name="text"></textarea>
+                <span>
+                    <label for="remember">Remember me</label>
+                    <input type="checkbox" name="remember" id="remember">
+                </span>
+                <input type="submit" id="submit" name="submit" value="Log In">
+            </form>
+        </div>
+        <div class="backToHome"><a href="/hw02/"><img src="img/sofaLogo.svg"></a>
+            <div>The most powerful sports app for live scores and football scores, results and stats. And not just
+                football,
+                choose from more than 20+ sports.</div>
+        </div>
+    </div>
+
+    <div class="bottom-navigation">
+
+        <div>
+            <input type="radio" id="sports" class="radio" name="radio">
+            <label for="sports"><i class="fa-solid fa-basketball"></i></label>
+            <div class="dropup-content">
+                <a href="">More...</a>
+                <a href="">Esports</a>
+                <a href="">Handball</a>
+                <a href="">Basketball</a>
+                <a href="">Football</a>
+            </div>
+        </div>
+
+        <input type="radio" id="home" class="radio" name="radio" checked>
+        <label for="home"><a href="/hw02/"><i class="fa-solid fa-house"></i></a></label>
+        <div>
+            <input type="radio" id="bars" name="radio" class="radio">
+            <label for="bars"><i class="fa-solid fa-bars"></i></label>
+
+            <div class="dropup-content">
+                <a href="login.html"><i class="fa-solid fa-user"></i></a>
+                <a href="">Settings</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+@mixin flex() {
+  height: 100%;
+  width: 50vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+.form {
+  background-color: $primary;
+  @include flex();
+  form {
+    display: flex;
+    flex-direction: column;
+    input,
+    textarea {
+      margin-bottom: 10px;
+      border-radius: 5px;
+    }
+  }
+}
+.backToHome {
+  @include flex();
+  flex-direction: column;
+  img {
+    height: auto;
+    width: 100px;
+  }
+  div {
+    bottom: 0px;
+    position: fixed;
+    padding: 50px;
+    color: $blue;
+    text-align: center;
+  }
+}
+#submit {
+  background-color: $secondary;
+  color: $primary;
+  padding: 15px 80px;
+  border: 0;
+  border-radius: 10px;
+  font-size: 24px;
+  &:hover {
+    cursor: pointer;
+    background-color: $blue;
+  }
+}
+@media screen and (max-width: 620px) {
+  .backToHome {
+    display: none;
+  }
+  .form {
+    width: 100vw;
+    min-height: 100vh;
+  }
+}
