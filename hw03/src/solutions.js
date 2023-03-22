@@ -32,15 +32,19 @@ module.exports = {
    * Returns an object with the `getValue` and `setValue` methods, having `value` hidden from the outside.
    */
   createEncapsulatedObject() {
-    // var obj = {
-    //   value: undefined,
-    //   getValue: function () {
-    //     return obj.value;
-    //   },
-    //   setValue: function (value) {
-    //     obj.value = value;
-    //   },
+    //let obj = function (value) {
+    let fun = {
+      getValue: function () {
+        return value;
+      },
+      setValue: function (value) {
+        this.value = value;
+        return value;
+      },
+    };
+    return fun;
     // };
+    // return obj();
   },
 
   /**
@@ -144,8 +148,28 @@ module.exports = {
    *
    * @param {Function} callGetName
    * @param {Function} callGetLanguage
-   */
-  classInheritance(callGetName, callGetLanguage) {},
+   */ //.bind(this)
+  classInheritance(callGetName, callGetLanguage) {
+    class Person {
+      constructor(name) {
+        this.name = name;
+      }
+      getName() {
+        return this.name;
+      }
+    }
+    class Programmer extends Person {
+      constructor(name, language) {
+        super(name);
+        this.language = language;
+      }
+      getLanguage() {
+        return this.language;
+      }
+    }
+    const myName = new Programmer("Nela", "hr");
+    return myName;
+  },
 
   /**
    * EXTRA CREDIT TASK:
@@ -159,8 +183,15 @@ module.exports = {
    * @param {Function} consumer
    */
   timeoutIncrement(consumer) {
-    for (var i = 1; i <= 3; i += 1) {
-      setTimeout(() => {}, 1000);
+    function consumer() {
+      for (var i = 1; i <= 3; i += 1) {
+        const j = JSON.parse(JSON.stringify(i)); //deep copy
+        setTimeout(() => {
+          console.log(j);
+        }, j * 1000);
+      }
     }
+
+    consumer();
   },
 };
