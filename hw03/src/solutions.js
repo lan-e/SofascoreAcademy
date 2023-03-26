@@ -32,19 +32,15 @@ module.exports = {
    * Returns an object with the `getValue` and `setValue` methods, having `value` hidden from the outside.
    */
   createEncapsulatedObject() {
-    //let obj = function (value) {
-    let fun = {
-      getValue: function () {
+    let value;
+    return {
+      getValue() {
         return value;
       },
-      setValue: function (value) {
-        this.value = value;
-        return value;
+      setValue(val) {
+        value = val;
       },
     };
-    return fun;
-    // };
-    // return obj();
   },
 
   /**
@@ -52,7 +48,8 @@ module.exports = {
    * @param {Object} obj
    */
   shallowCopy(obj) {
-    return Object.assign({}, obj);
+    // return Object.assign({}, obj);
+    return { ...obj }; //better solution
   },
 
   /**
@@ -60,7 +57,8 @@ module.exports = {
    * @param {Object} obj
    */
   deepCopy(obj) {
-    return JSON.parse(JSON.stringify(obj));
+    // return JSON.parse(JSON.stringify(obj));
+    return structuredClone(obj); //better solution
   },
 
   /**
@@ -128,11 +126,12 @@ module.exports = {
    * @param numberArray
    */
   multiplyArrayByTwoNew(numberArray) {
-    const numberArrayNew = JSON.parse(JSON.stringify(numberArray));
-    for (let i = 0; i < numberArrayNew.length; i++) {
-      numberArrayNew[i] *= 2;
-    }
-    return numberArrayNew;
+    // const numberArrayNew = JSON.parse(JSON.stringify(numberArray));
+    // for (let i = 0; i < numberArrayNew.length; i++) {
+    //   numberArrayNew[i] *= 2;
+    // }
+    // return numberArrayNew;
+    return numberArray.map((v) => v * 2); //better solution
   },
 
   /**
@@ -153,22 +152,26 @@ module.exports = {
     class Person {
       constructor(name) {
         this.name = name;
+        this.getName = this.getName.bind(this);
       }
       getName() {
-        return this.name;
+        return callGetName(this.name);
       }
     }
     class Programmer extends Person {
       constructor(name, language) {
         super(name);
         this.language = language;
+        this.getLanguage = this.getLanguage.bind(this);
       }
       getLanguage() {
-        return this.language;
+        return callGetLanguage(this.language);
       }
     }
-    const myName = new Programmer("Nela", "hr");
-    return myName;
+    return {
+      Person,
+      Programmer,
+    };
   },
 
   /**
@@ -183,15 +186,12 @@ module.exports = {
    * @param {Function} consumer
    */
   timeoutIncrement(consumer) {
-    function consumer() {
-      for (var i = 1; i <= 3; i += 1) {
-        const j = JSON.parse(JSON.stringify(i)); //deep copy
+    for (var i = 1; i <= 3; i += 1) {
+      (function (i) {
         setTimeout(() => {
-          console.log(j);
-        }, j * 1000);
-      }
+          consumer(i);
+        }, 1000);
+      })(i);
     }
-
-    consumer();
   },
 };
