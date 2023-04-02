@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poke API</title>
+    <link rel="icon" type="image/x-icon" href="poke.ico">
+    <link href="styles.css" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <img src="img/Pokemon.svg">
+    </header>
+    <main>
+        <div id="flex-container"></div>
+        <div id="navigation">
+            <div>Showing&nbsp<span id="page"></span>/1281 pokemons<br></div>
+            <button onclick="nextPage()" id="btn_next">Load more</button>
+            <!-- <button onclick="revertDel()">Revert</button> -->
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+
+</html>
