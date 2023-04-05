@@ -1,27 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
 body {
-  background-color: #eee;
+  background-color: #fff;
   margin: 0;
   font-family: "Montserrat", sans-serif;
 }
-.hidden {
-  display: none;
-}
-button {
-  color: #900;
-  background-color: #ddd;
-  border-radius: 5px;
-  padding: 6px 10px;
-  margin-top: 10px;
-  border: 0;
-  font-size: 14px;
-}
-button:hover {
-  background-color: #900;
-  color: white;
-}
 header {
-  background-color: #d7d7d7;
+  background-color: #aaa;
   margin: 0;
   position: fixed;
   top: 0;
@@ -31,6 +15,40 @@ header img {
   padding-left: 20px;
   height: 50px;
 }
+button {
+  color: #900;
+  background-color: #ccc;
+  border-radius: 5px;
+  padding: 6px 10px;
+  margin-top: 10px;
+  margin-right: 5px;
+  border: 0;
+  font-size: 14px;
+}
+
+button:active {
+  background-color: #999;
+}
+.btn-inv {
+  color: white;
+  background-color: #800;
+}
+.btn-inv:hover {
+  background-color: #a00;
+}
+#btn_next {
+  background-color: #3b4cca;
+  color: white;
+}
+#btn_next:active {
+  background-color: #3b4c99;
+}
+.hidden {
+  display: none;
+}
+.show {
+  display: block;
+}
 #flex-container {
   font-size: 14px;
   display: flex;
@@ -39,17 +57,29 @@ header img {
   width: 50vw;
   text-align: center;
 }
+#flex-container > div {
+  background-color: #fff;
+  margin: 10px;
+  padding: 10px 10px;
+  border-radius: 10px;
+  box-shadow: 2px 4px 4px #ccc;
+  max-width: 116px;
+}
+#flex-container > div img {
+  background-color: #eee;
+  border-radius: 5px;
+}
 #navigation {
   position: fixed;
-  margin: 50px 0;
-  right: 200px;
-  bottom: 20px;
+  right: 5vw;
+  bottom: 70px;
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 2px 4px 8px #ccc;
 }
-#btn_next {
-  color: white;
-  background-color: #900;
-}
-#btn_next:hover {
-  background-color: #ddd;
-  color: #900;
+@media screen and (max-width: 900px) {
+  #flex-container {
+    padding-bottom: 100px;
+  }
 }
