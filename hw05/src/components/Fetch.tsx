@@ -11,6 +11,7 @@ interface PokemonResponse {
 
 export default function Fetch() {
   const [pokemon, setPokemon] = useState<PokemonResponse[]>([]);
+  const [id, setId] = useState(1);
 
   // your task here is to fetch Pokémon from a given URL and just display its name
   // first Pokémon should be fetched when the compontent is first rendered
@@ -22,15 +23,27 @@ export default function Fetch() {
   const fetchPokemon = async (id: number) => {
     //we fetch the Pokemon, convert it to json and we have p object of type PokemonResponse
     const p: PokemonResponse = await (await fetch(getPokemonUrl(id))).json();
+    setPokemon((prevPokemon) => [...prevPokemon, p]);
   };
 
   // return 2 elements:
   // 1st: a button which will trigger another fetch on click, for a Pokémon with next id
   // 2nd: All Pokémon stored in your list
+  useEffect(() => {
+    fetchPokemon(id);
+  }, [id]);
+
+  const handleFetchClick = () => {
+    setId((prevId) => prevId + 1);
+  };
+
   return (
     <div>
-      <button>FETCH</button>
+      <button onClick={handleFetchClick}>FETCH</button>
       {/* display Pokémon in a list here, just display a div with its name for each Pokémon */}
+      {pokemon.map((p) => (
+        <div key={p.id}>{p.name}</div>
+      ))}
     </div>
   );
 }
