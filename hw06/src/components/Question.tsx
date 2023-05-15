@@ -31,13 +31,16 @@ const Question = ({
 }: TriviaQuestion) => {
   return (
     <div>
-      <div id="question">
-        Question: {questionNr}/{totalQuestions}
-      </div>
-      <div>Category: {category}</div>
-      <div>Difficulty: {difficulty}</div>
-      <h3 dangerouslySetInnerHTML={{ __html: question }}></h3>
-      {/* <h3>{question}</h3> */}
+      <QuestionInfo>
+        <div id="question">
+          Question: {questionNr}/{totalQuestions}
+        </div>
+        <div>{category}</div>
+        <div>Difficulty: {difficulty}</div>
+      </QuestionInfo>
+      <QuestionStyle>
+        <h3 dangerouslySetInnerHTML={{ __html: question }} />
+      </QuestionStyle>
       {answers.map((answer) => (
         <ButtonWrapper
           key={answer}
@@ -49,11 +52,7 @@ const Question = ({
             value={answer}
             onClick={callback}
           >
-            <span dangerouslySetInnerHTML={{ __html: answer }}></span>
-            {userAnswer?.correctAnswer === answer && <span>✅</span>}
-            {userAnswer &&
-              !userAnswer.correct &&
-              userAnswer.answer === answer && <span>❌</span>}
+            <div dangerouslySetInnerHTML={{ __html: answer }} />
           </button>
         </ButtonWrapper>
       ))}
@@ -63,18 +62,26 @@ const Question = ({
 export default Question;
 
 //STYLES
-const ButtonWrapper = styled.div<ButtonWrapperProps>`
+const QuestionInfo = styled.div`
+  height: 80px;
+`;
+const QuestionStyle = styled.h3`
+  height: 150px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+`;
+const ButtonWrapper = styled.div<ButtonWrapperProps>`
+  display: flex;
+  justify-content: center;
   :hover {
     opacity: 0.8;
   }
   button {
     font-size: 1rem;
     color: #fff;
-    background-color: #374df5;
+    background: ${({ correct, userClicked }) =>
+      correct ? "#0d8b0d" : !correct && userClicked ? "#c02121" : "#374df5"};
     width: 40vw;
     height: 40px;
     min-height: 60px;

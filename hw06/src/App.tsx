@@ -126,7 +126,6 @@ export default function App() {
         <Img src={logo} alt="logo" />
       </a>
       {endQuiz ? <h3>Can you pass this quiz with score 15?</h3> : null}
-
       <Wrapper style={{ display: !endQuiz ? "block" : "none" }}>
         {!endQuiz ? <p className="score">Score: {score}</p> : null}
         {loading && <p>Loading questions...</p>}
@@ -146,12 +145,11 @@ export default function App() {
         !loading &&
         userAnswer.length === questionNumber + 1 &&
         questionNumber !== ALL_QUESTIONS - 1 ? (
-          <SecondButton className="next" onClick={nextQuestion}>
+          <NavButton className="next" onClick={nextQuestion}>
             Next
-          </SecondButton>
+          </NavButton>
         ) : null}
       </Wrapper>
-
       {userAnswer.length === ALL_QUESTIONS ? ( //ALL_QUESTIONS
         <CenterMe>
           Congrats! You finished the quiz.🎉🎉🎉 You can start again for better
@@ -160,7 +158,7 @@ export default function App() {
       ) : null}
       {endQuiz || userAnswer.length === ALL_QUESTIONS ? (
         <Choose>
-          <div>Before start, please choose difficulty:</div>
+          <div>Before start, choose difficulty and category:</div>
           <div>
             <form>
               <select value={difficulty} onChange={handleDifficultyChange}>
@@ -174,7 +172,6 @@ export default function App() {
       ) : null}
       {endQuiz || userAnswer.length === ALL_QUESTIONS ? (
         <Choose>
-          <div>and category</div>
           <div>
             <form>
               <select value={category} onChange={handleCategoryChange}>
@@ -189,9 +186,9 @@ export default function App() {
         </Choose>
       ) : null}
       {endQuiz || userAnswer.length === ALL_QUESTIONS ? (
-        <SecondButton className="start" onClick={startQuiz}>
+        <NavButton className="start" onClick={startQuiz}>
           Start the quiz
-        </SecondButton>
+        </NavButton>
       ) : null}
     </div>
   );
@@ -207,7 +204,7 @@ const Wrapper = styled.div`
   background-color: #f4f4f4;
   border-radius: 20px;
   width: 80vw;
-  min-height: 650px;
+  min-height: 780px;
   height: max-content;
   padding: 2vh 5vw;
   box-shadow: 6px 8px 20px #888;
@@ -218,18 +215,17 @@ const Wrapper = styled.div`
 `;
 const CenterMe = styled.div`
   text-align: center;
-  padding: 10px;
+  margin: 20px 0;
 `;
 const Choose = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   text-align: center;
   select {
     cursor: pointer;
     border: 0;
-    width: 150px;
+    width: 180px;
     height: 40px;
     border-radius: 10px;
     text-align: center;
@@ -237,7 +233,7 @@ const Choose = styled.div`
     margin-top: 5px;
   }
 `;
-const SecondButton = styled.button`
+const NavButton = styled.button`
   cursor: pointer;
   width: 100%;
   background-color: #777;
