@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import logo from "./img/sofa.svg";
 import styled from "styled-components";
 import Question from "./components/Question";
@@ -14,6 +14,10 @@ export enum Difficulty {
   EASY = "easy",
   MEDIUM = "medium",
   HARD = "hard",
+}
+interface Category {
+  id: number;
+  name: string;
 }
 export interface TriviaQuestion {
   category: string;
@@ -36,12 +40,27 @@ export default function App() {
   const [userAnswer, setUserAnswer] = useState<AnswerObject[]>([]);
   const [endQuiz, setEndQuiz] = useState(true);
   const [difficulty, setDifficulty] = useState<Difficulty>(Difficulty.EASY);
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [category, setCategory] = useState("");
 
   //FETCH DATA
+  const fetchCategories = async () => {
+    const url = `https://opentdb.com/api_category.php`;
+    const data = await (await fetch(url)).json();
+    setCategories(data.trivia_categories);
+  };
+  useEffect(() => {
+    fetchCategories();
+  }, []);
+
   const randomize = (array: any[]) =>
     [...array].sort(() => Math.random() - 0.2);
-  const fetchQuestions = async (amount: number, difficulty: Difficulty) => {
-    const url = `https://opentdb.com/api.php?amount=${amount}&difficulty=${difficulty}&type=multiple`;
+  const fetchQuestions = async (
+    amount: number,
+    difficulty: Difficulty,
+    category: string
+  ) => {
+    const url = `https://opentdb.com/api.php?amount=${amount}&difficulty=${difficulty}&category=${category}&type=multiple`;
     const data = await (await fetch(url)).json();
     return data.results.map((question: TriviaQuestion) => ({
       ...question,
@@ -56,10 +75,18 @@ export default function App() {
     setDifficulty(e.target.value as Difficulty);
   };
 
+  const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setCategory(e.target.value);
+  };
+
   const startQuiz = async () => {
     setLoading(true);
     setEndQuiz(false);
-    const newQuestions = await fetchQuestions(ALL_QUESTIONS, difficulty);
+    const newQuestions = await fetchQuestions(
+      ALL_QUESTIONS,
+      difficulty,
+      category
+    );
     setQuestion(newQuestions);
     setScore(0);
     setUserAnswer([]);
@@ -132,7 +159,7 @@ export default function App() {
         </CenterMe>
       ) : null}
       {endQuiz || userAnswer.length === ALL_QUESTIONS ? (
-        <ChooseDiff>
+        <Choose>
           <div>Before start, please choose difficulty:</div>
           <div>
             <form>
@@ -143,7 +170,23 @@ export default function App() {
               </select>
             </form>
           </div>
-        </ChooseDiff>
+        </Choose>
+      ) : null}
+      {endQuiz || userAnswer.length === ALL_QUESTIONS ? (
+        <Choose>
+          <div>and category</div>
+          <div>
+            <form>
+              <select value={category} onChange={handleCategoryChange}>
+                {categories.map((category) => (
+                  <option key={category.id} value={category.id}>
+                    {category.name}
+                  </option>
+                ))}
+              </select>
+            </form>
+          </div>
+        </Choose>
       ) : null}
       {endQuiz || userAnswer.length === ALL_QUESTIONS ? (
         <SecondButton className="start" onClick={startQuiz}>
@@ -177,7 +220,7 @@ const CenterMe = styled.div`
   text-align: center;
   padding: 10px;
 `;
-const ChooseDiff = styled.div`
+const Choose = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -186,7 +229,7 @@ const ChooseDiff = styled.div`
   select {
     cursor: pointer;
     border: 0;
-    width: 30vw;
+    width: 150px;
     height: 40px;
     border-radius: 10px;
     text-align: center;
