@@ -38,9 +38,7 @@ const Question = ({
         <div>{category}</div>
         <div>Difficulty: {difficulty}</div>
       </QuestionInfo>
-      <QuestionStyle>
-        <h3 dangerouslySetInnerHTML={{ __html: question }} />
-      </QuestionStyle>
+      <QuestionStyle dangerouslySetInnerHTML={{ __html: question }} />
       {answers.map((answer) => (
         <ButtonWrapper
           key={answer}

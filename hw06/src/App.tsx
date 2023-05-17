@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import logo from "./img/sofa.svg";
 import styled from "styled-components";
 import Question from "./components/Question";
-
+import runConfetti from "./confetti";
 //TYPES
 export interface AnswerObject {
   question: string;
@@ -51,7 +51,10 @@ export default function App() {
   };
   useEffect(() => {
     fetchCategories();
-  }, []);
+    if (userAnswer.length === ALL_QUESTIONS) {
+      runConfetti();
+    }
+  }, [userAnswer.length]);
 
   const randomize = (array: any[]) =>
     [...array].sort(() => Math.random() - 0.2);
@@ -125,7 +128,7 @@ export default function App() {
       <a href="/">
         <Img src={logo} alt="logo" />
       </a>
-      {endQuiz ? <h3>Can you pass this quiz with score 15?</h3> : null}
+      {endQuiz ? <h3>Can you pass this quiz with a score of 15?</h3> : null}
       <Wrapper style={{ display: !endQuiz ? "block" : "none" }}>
         {!endQuiz ? <p className="score">Score: {score}</p> : null}
         {loading && <p>Loading questions...</p>}
@@ -152,37 +155,33 @@ export default function App() {
       </Wrapper>
       {userAnswer.length === ALL_QUESTIONS ? ( //ALL_QUESTIONS
         <CenterMe>
-          Congrats! You finished the quiz.🎉🎉🎉 You can start again for better
-          results or for fun.
+          You finished the quiz with score {score}/15!🎉 You can start again for
+          better results or for fun.
         </CenterMe>
       ) : null}
       {endQuiz || userAnswer.length === ALL_QUESTIONS ? (
         <Choose>
-          <div>Before start, choose difficulty and category:</div>
-          <div>
-            <form>
-              <select value={difficulty} onChange={handleDifficultyChange}>
-                <option value="easy">easy</option>
-                <option value="medium">medium</option>
-                <option value="hard">hard</option>
-              </select>
-            </form>
-          </div>
+          <div>Before starting, choose category and difficulty:</div>
+          <form>
+            <select value={category} onChange={handleCategoryChange}>
+              {categories.map((category) => (
+                <option key={category.id} value={category.id}>
+                  {category.name}
+                </option>
+              ))}
+            </select>
+          </form>
         </Choose>
       ) : null}
       {endQuiz || userAnswer.length === ALL_QUESTIONS ? (
         <Choose>
-          <div>
-            <form>
-              <select value={category} onChange={handleCategoryChange}>
-                {categories.map((category) => (
-                  <option key={category.id} value={category.id}>
-                    {category.name}
-                  </option>
-                ))}
-              </select>
-            </form>
-          </div>
+          <form>
+            <select value={difficulty} onChange={handleDifficultyChange}>
+              <option value="easy">easy</option>
+              <option value="medium">medium</option>
+              <option value="hard">hard</option>
+            </select>
+          </form>
         </Choose>
       ) : null}
       {endQuiz || userAnswer.length === ALL_QUESTIONS ? (
