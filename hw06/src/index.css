@@ -1,0 +1,19 @@
+* {
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+  scrollbar-width: thin;
+}
+body {
+  height: 100%;
+  color: #111;
+  background-color: #d7d7d7;
+  margin: 50px;
+  margin-top: 10px;
+  padding: 0 20px;
+  display: flex;
+  justify-content: center;
+  user-select: none;
+}
+h3 {
+  text-align: center;
+}
