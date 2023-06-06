@@ -82,8 +82,8 @@ export function EventData({ matches }) {
                         <div>{match.awayTeam.name}</div>
                       </Teams>
                       <FlexVer>
-                        <div>{match.homeScore.total}0</div>
-                        <div>{match.awayScore.total}1</div>
+                        <div>{match.homeScore.total}</div>
+                        <div>{match.awayScore.total}</div>
                       </FlexVer>
                     </FlexBtwNew>
                   </DailyGameText>

@@ -16,6 +16,7 @@ export const DailyGamesContainer = styled.div`
   background-color: #fff;
   border-radius: 0 0 16px 16px;
   margin: 0 12px;
+  padding-bottom:16px;
   box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.08);
   @media (max-width: 991px) {
     width: 80vw;

@@ -27,7 +27,7 @@ export default function DailyGames() {
     isLoading,
     // mutate,
   } = useSWR(
-    `https://academy.dev.sofascore.com/sport/${selectedSport}/events/2023-04-29`
+    `https://academy.dev.sofascore.com/sport/${selectedSport}/events/2023-04-01`
     // formattedDate
     //   ? `https://academy.dev.sofascore.com/sport/${selectedSport}/events/${formattedDate}`
     //   : null
