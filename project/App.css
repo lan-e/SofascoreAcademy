@@ -1,0 +1,11 @@
+input[type="radio"] {
+  border: 0px;
+  width: 24px;
+  height: 24px;
+  background-color: #374df5;
+}
+/* select {
+  width: 100%;
+  border: 0;
+  padding: 6px 16px;
+} */

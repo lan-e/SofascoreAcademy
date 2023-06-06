@@ -2,6 +2,7 @@ import React from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { FlexVer, Main, TopContainer } from "@/components/sharedstyles";
+import styled from "styled-components";
 import Leagues from "@/components/Leagues/Leagues";
 
 export const getStaticPaths = async () => {
@@ -36,13 +37,13 @@ const Details = ({ player }) => {
   return (
     <>
       <Head>
-        <title>Mini Sofascore | Player</title>
+        <title>Mini Sofascore | Team</title>
       </Head>
       <Main>
         <Leagues />
         <TopContainer>
           <FlexVer>
-            <h1>Player: {id}</h1>
+            <h1>Team: {id}</h1>
             <p>{player.name}</p>
             <p>{player.email}</p>
             <p>{player.website}</p>

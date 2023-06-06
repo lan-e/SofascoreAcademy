@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { Container, Main, StyledLink } from "@/components/sharedstyles";
+import styled from "styled-components";
 
 const NotFound = () => {
   const router = useRouter();
@@ -29,17 +30,20 @@ const NotFound = () => {
         <title>Mini Sofascore | 404</title>
       </Head>
       <Main>
-        <Container>
+        <Container404>
           <h1>Ooops..</h1>
           <h2>That page cannot be found.</h2>
           <h3>
             Go back to the <StyledLink href="/">Homepage</StyledLink>
           </h3>
           <p>Auto redirect in: 5 </p>
-        </Container>
+        </Container404>
       </Main>
     </>
   );
 };
 
 export default NotFound;
+const Container404 = styled(Container)`
+  width: 100vw;
+`;

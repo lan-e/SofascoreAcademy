@@ -3,7 +3,7 @@ import { createGlobalStyle } from "styled-components";
 const GlobalStyle = createGlobalStyle`
   html,
   body {
-    color: ${({ theme }) => theme.colors.primary};
+    color: #121212;
     /* font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
       Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; */
     font-family: Roboto;
@@ -24,9 +24,9 @@ const GlobalStyle = createGlobalStyle`
   }
   .active{
     border-bottom: 4px solid #fff;
-    @media (max-width:991px){
+    /* @media (max-width:991px){
       border:0;
-    }
+    } */
   }
 `;
 
