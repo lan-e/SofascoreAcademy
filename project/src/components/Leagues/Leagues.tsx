@@ -17,14 +17,14 @@ const Leagues = () => {
   );
   if (!leagues) {
     return (
-      <div>
+      <LeagueContainer>
         <Image
           src="img/ic_loading.svg"
           width="20"
           height="20"
           alt="pointright"
         />
-      </div>
+      </LeagueContainer>
     );
   }
 

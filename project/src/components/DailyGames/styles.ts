@@ -67,9 +67,6 @@ export const Teams = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center; 
-  @media(max-width: 991px){
-    width:60vw;
-  }
 `
 export const Time = styled.div`
 padding-right: 16px;`
