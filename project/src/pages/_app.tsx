@@ -1,18 +1,13 @@
 import type { AppProps } from "next/app";
-import Layout from "@/components/Layout";
-import { ThemeProvider, DefaultTheme } from "styled-components";
-import GlobalStyle from "../components/globalstyles";
+import { useState } from "react";
 import { SWRConfig } from "swr";
-import "../../App.css";
+import Layout from "@/components/Layout";
+import { ThemeProvider } from "styled-components";
+import { lightTheme, darkTheme } from "../../themes";
+import GlobalStyle from "../components/globalstyles";
 
-const theme: DefaultTheme = {
-  colors: {
-    primary: "#374df5",
-    secondary: "#1327ba",
-  },
-};
 //@ts-ignore
-const fetcher = (...args) => fetch(...args).then((res) => {
+const fetcher = (...args) =>fetch(...args).then((res) => {
     if (res.ok) {
       return res.json();
     } else {
@@ -21,13 +16,26 @@ const fetcher = (...args) => fetch(...args).then((res) => {
   });
 
 function App({ Component, pageProps }: AppProps) {
+  const [selectedTheme, setSelectedTheme] = useState(lightTheme);
+
+  function handleThemeChange(selectedTheme: string) {
+    if (selectedTheme === "light") {
+      setSelectedTheme(lightTheme);
+    } else if (selectedTheme === "dark") {
+      setSelectedTheme(darkTheme);
+    }
+  }
   return (
     <>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={selectedTheme}>
         <GlobalStyle />
         <SWRConfig value={{ fetcher: fetcher }}>
           <Layout>
-            <Component {...pageProps} />
+            <Component
+              {...pageProps}
+              handleThemeChange={handleThemeChange}
+              selectedTheme={selectedTheme}
+            />
           </Layout>
         </SWRConfig>
       </ThemeProvider>

@@ -8,8 +8,6 @@ export default function TournamentPage() {
     <>
       <Head>
         <title>Mini Sofascore | Tournament</title>
-        <meta name="description" content="Mini Sofascore" />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <Main>
         <Leagues />

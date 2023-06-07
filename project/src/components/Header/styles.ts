@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Image from "next/image";
 
 export const HeaderStlyed = styled.div`
+  z-index:1;
   position: fixed;
   padding-top: 14px;
   width: 100%;

@@ -3,11 +3,9 @@ import { createGlobalStyle } from "styled-components";
 const GlobalStyle = createGlobalStyle`
   html,
   body {
-    color: #121212;
-    /* font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-      Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; */
+    color:  ${({ theme }) => theme.colors.color};
     font-family: Roboto;
-    background-color: #eff3f8;
+    background-color: ${({ theme }) => theme.colors.surface};
     user-select: none;
     @media (max-width: 991px) {
     overflow-x: hidden;
@@ -28,6 +26,18 @@ const GlobalStyle = createGlobalStyle`
       border:0;
     } */
   }
+  input[type="radio"] {
+  width: 24px;
+  height: 24px;
+  }  
+  select{
+    width: 25vw;
+    border: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    color:  ${({ theme }) => theme.colors.color};
+    }
 `;
 
 export default GlobalStyle;

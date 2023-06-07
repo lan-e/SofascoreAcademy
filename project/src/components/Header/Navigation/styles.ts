@@ -3,6 +3,7 @@ import styled,{ css }  from "styled-components";
 import Link from "next/link";
 
 export const NavStlyed = styled.div`
+  z-index:1;
   position: fixed;
   top: 64px;
   width: 100%;

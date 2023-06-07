@@ -7,7 +7,7 @@ const Container = styled.div`
   min-height: 670px;
   height: max-content;
   width: 35vw;
-  background-color: #fff;
+  background-color:${({ theme }) => theme.colors.surface1};
   border-radius: 16px;
   padding: 16px;
   display: flex;
@@ -26,18 +26,10 @@ const Main = styled.main`
   padding-bottom: 148px;
   margin: 0 12px;
   display: flex;
-  /*padding: 5rem 0; 
-    padding-bottom: 48px; if footer is not fixed
-    flex: 1;
-    justify-content: center; */
   @media (max-width: 991px) {
     padding-top: 96px;
     justify-content: center;
   }
-`;
-const Logo = styled(Image)`
-  width: 132px;
-  height: 20px;
 `;
 const StyledLink = styled(Link)`
   color: ${({ theme }) => theme.colors.primary};
@@ -70,7 +62,7 @@ const TopContainer = styled.div`
   align-items: center;
   height: 160px;
   width: 60vw;
-  background-color: #fff;
+  background-color:${({ theme }) => theme.colors.surface1};
   border-radius: 16px;
   padding: 16px;
   margin: 0 12px;
@@ -86,8 +78,22 @@ const TopContainer = styled.div`
     height: 57px;
     padding: 11.4px;
     height: 80px;
-    border: 1px solid #12121233;
+    border: 1px solid ${({ theme }) => theme.colors.onsurfacelv3};
     margin-right: 24px;
   }
 `;
-export { Logo, FlexVerLeft, Container, Main, FlexHor, FlexVer, FlexBtw,StyledLink,TopContainer };
+const Logo = styled(Image)`
+  width: 132px;
+  height: 20px;
+`;
+const LogoWhite = styled(Logo)`
+filter: invert(100%) sepia(29%) saturate(2%) hue-rotate(74deg)
+  brightness(112%) contrast(100%);
+`;
+const IcoBlue = styled.svg`
+fill:${({ theme }) => theme.colors.primary};
+`;
+const IcoBW = styled.svg`
+fill:${({ theme }) => theme.colors.onsurfacelv1};
+`
+export { IcoBlue, LogoWhite, IcoBW, FlexVerLeft, Container, Main, FlexHor, FlexVer, FlexBtw,StyledLink,TopContainer };

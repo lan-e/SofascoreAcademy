@@ -9,7 +9,7 @@ import Image from "next/image";
 export default function DailyGames() {
   const { selectedSport } = useContext(SportContext);
   const { selectedDate } = useContext(DateContext);
-  console.log(selectedDate);
+  // console.log(selectedDate);
   const currentDate = new Date();
   const formattedDate = currentDate.toISOString().slice(0, 10); // Format: YYYY-MM-DD
 
@@ -27,9 +27,9 @@ export default function DailyGames() {
     isLoading,
     // mutate,
   } = useSWR(
-    `https://academy.dev.sofascore.com/sport/${selectedSport}/events/2023-04-01`
+    // `https://academy.dev.sofascore.com/sport/${selectedSport}/events/2023-04-01`
     // formattedDate
-    //   ? `https://academy.dev.sofascore.com/sport/${selectedSport}/events/${formattedDate}`
+    `https://academy.dev.sofascore.com/sport/${selectedSport}/events/${formattedDate}`
     //   : null
     // ,{ refreshInterval: 10000 }
   );

@@ -5,7 +5,7 @@ export const LeagueContainer = styled.div`
   min-height: 670px;
   height: max-content;
   width: 35vw;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.colors.surface1};
   border-radius: 16px;
   padding: 16px;
   display: flex;

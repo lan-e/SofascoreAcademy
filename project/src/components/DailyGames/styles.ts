@@ -13,7 +13,7 @@ export const DailyGamesContainer = styled.div`
   min-height: 622px;
   height: max-content;
   width: 35vw;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.colors.surface1};
   border-radius: 0 0 16px 16px;
   margin: 0 12px;
   padding-bottom:16px;
@@ -49,7 +49,7 @@ export const DailyGameCell = styled.div`
 export const DailyGameEach = styled.div`
   width:35vw;
   &:hover{
-    background-color: #e1edfe;
+    background-color:${({ theme }) => theme.colors.primaryHighlight};
     cursor:pointer;
   }
   @media(max-width:991px){
@@ -82,7 +82,7 @@ width: 100%;
 `
 //DATENAV
 export const DateContainer = styled.div`
-  background-color: ${({ theme }) => theme.colors.secondary};
+  background-color: ${({ theme }) => theme.colors.primaryVariant};
   width: 35vw;
   height: 48px;
   padding: 16px;
@@ -100,8 +100,8 @@ export const StyledDate = styled.div`
   color: #fff;
   text-transform: uppercase;
   font-size: 12px; 
-  padding: 15px;
-  border-bottom:4px solid ${({ theme }) => theme.colors.secondary};
+   padding: 8px;
+   border-bottom:4px solid ${({ theme }) => theme.colors.primaryVariant};
   &:hover {
     cursor: pointer;
   }

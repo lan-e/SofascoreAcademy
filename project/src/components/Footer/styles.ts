@@ -11,11 +11,11 @@ export const FooterStlyed = styled.div`
   justify-content: center;
   align-items: center;
   padding-top: 24px;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.colors.surface1};
   box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.12);
 `;
 export const FooterContent = styled.div`
-  color: rgba(18, 18, 18, 0.4);
+  color: ${({ theme }) => theme.colors.onsurfacelv2};
   font-family: Roboto;
   font-size: 12px;
   margin-top: 24px;
