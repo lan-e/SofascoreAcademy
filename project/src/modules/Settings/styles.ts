@@ -1,4 +1,4 @@
-import { Container } from "@/components/sharedstyles";
+import { Container, FlexBtw } from "@/components/sharedstyles";
 import styled from "styled-components";
 
 export const SettingsContainer = styled(Container)`
@@ -31,10 +31,12 @@ export const SelectLang = styled.div`
   border-radius: 2px;
 `
 export const BlueTitle = styled.h5`
+  color: ${({ theme }) => theme.colors.primary};
+`;
+export const LangTitle = styled(BlueTitle)`
 position: absolute;
 left: 16px;
 top: 6px;
-  color: ${({ theme }) => theme.colors.primary};
 `;
 export const SelectPointer = styled.svg`
 position: absolute;
@@ -63,10 +65,7 @@ export const Hr = styled.hr`
   border: 1px solid ${({ theme }) => theme.colors.onsurfacelv4};
   margin-bottom: 16px;
 `;
-export const Theme = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+export const Theme = styled(FlexBtw)`
   padding: 14px 0;
   font-size: 14px;
   width: 100%;

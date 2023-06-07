@@ -40,22 +40,19 @@ const FlexHor = styled.div`
   justify-content: center;
   align-items: center;
 `;
-const FlexVer = styled.div`
-  display: flex;
+const FlexVer = styled(FlexHor)`
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
 `;
 const FlexBtw=styled.div`
-display: flex;
-justify-content: space-between;
-align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `
 const FlexVerLeft = styled.div`
-display: flex;
-flex-direction: column;
-justify-content: left;
-align-items: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: start;
 `;
 const TopContainer = styled.div`
   display: flex;

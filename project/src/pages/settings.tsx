@@ -1,9 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Head from "next/head";
-import Image from "next/image";
 import Link from "next/link";
 import Leagues from "@/components/Leagues/Leagues";
-import { Main, FlexHor, IcoBlue } from "@/components/sharedstyles";
+import {
+  Main,
+  FlexHor,
+  IcoBlue,
+  FlexBtw,
+  FlexVerLeft,
+} from "@/components/sharedstyles";
 import {
   BlueTitle,
   Cont,
@@ -19,23 +24,15 @@ import {
   BottomText,
   SelectLang,
   SelectPointer,
+  LangTitle,
 } from "@/modules/Settings/styles";
 
-interface MyComponentProps {
-  selectedTheme: string;
-  handleThemeChange: (selectedTheme: string) => void;
-}
+export default function settings({ toggleTheme, isDarkTheme }) {
+  const [isToggled, setIsToggled] = useState(isDarkTheme);
 
-export default function settings({
-  selectedTheme,
-  handleThemeChange,
-}: MyComponentProps) {
-  const [currentTheme, setCurrentTheme] = useState(selectedTheme);
-  console.log(selectedTheme);
-
-  const handleRadioChange = (e) => {
-    setCurrentTheme(e.target.value); //light or dark
-    handleThemeChange(e.target.value);
+  const onToggle = () => {
+    setIsToggled(!isToggled);
+    toggleTheme();
   };
 
   function changeDate() {}
@@ -51,14 +48,8 @@ export default function settings({
           <Cont>
             <Title>Settings</Title>
           </Cont>
-          {/* <Select>
-            <FlexVer>
-              <BlueTitle>Language</BlueTitle>
-              <div>English</div>
-            </FlexVer>
-          </Select> */}
           <SelectLang>
-            <BlueTitle>Language</BlueTitle>
+            <LangTitle>Language</LangTitle>
             <Select>
               <option>English</option>
               <option>Croatian</option>
@@ -82,30 +73,17 @@ export default function settings({
           </SelectLang>
           <GreyCont>
             <BlueTitle>Theme</BlueTitle>
-            <form>
-              <Theme>
-                <div>Light</div>
-                <Input
-                  type="radio"
-                  id="light"
-                  name="theme"
-                  value="light"
-                  checked={currentTheme === "light"}
-                  onChange={handleRadioChange}
+            <Theme>
+              <div>Light/Dark</div>
+              <label className="switch">
+                <input
+                  type="checkbox"
+                  checked={isToggled}
+                  onChange={onToggle}
                 />
-              </Theme>
-              <Theme>
-                <div>Dark</div>
-                <Input
-                  type="radio"
-                  id="dark"
-                  name="theme"
-                  value="dark"
-                  checked={currentTheme === "dark"}
-                  onChange={handleRadioChange}
-                />
-              </Theme>
-            </form>
+                <span className="slider round"></span>
+              </label>
+            </Theme>
           </GreyCont>
           <GreyCont>
             <BlueTitle>Date Format</BlueTitle>

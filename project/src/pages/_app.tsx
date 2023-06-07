@@ -18,12 +18,9 @@ const fetcher = (...args) =>fetch(...args).then((res) => {
 function App({ Component, pageProps }: AppProps) {
   const [selectedTheme, setSelectedTheme] = useState(lightTheme);
 
-  function handleThemeChange(selectedTheme: string) {
-    if (selectedTheme === "light") {
-      setSelectedTheme(lightTheme);
-    } else if (selectedTheme === "dark") {
-      setSelectedTheme(darkTheme);
-    }
+  const isDarkTheme = selectedTheme === darkTheme;
+  function toggleTheme() {
+    setSelectedTheme(isDarkTheme ? lightTheme : darkTheme);
   }
   return (
     <>
@@ -33,8 +30,8 @@ function App({ Component, pageProps }: AppProps) {
           <Layout>
             <Component
               {...pageProps}
-              handleThemeChange={handleThemeChange}
-              selectedTheme={selectedTheme}
+              toggleTheme={toggleTheme}
+              isDarkTheme={isDarkTheme}
             />
           </Layout>
         </SWRConfig>
