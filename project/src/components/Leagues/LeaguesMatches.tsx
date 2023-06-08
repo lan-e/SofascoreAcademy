@@ -1,11 +1,19 @@
 import React, { useState } from "react";
 import useSWR from "swr";
-import { Container, FlexBtw, FlexHor, FlexVer, IcoBlue } from "../sharedstyles";
+import { Container, FlexBtw, FlexVer, IcoBlue } from "../sharedstyles";
 import { BulletList } from "react-content-loader";
 import MatchesData from "../DailyGames/MatchesData";
 import { ChangePageBtn } from "./styles";
 
+import { useRouter } from "next/router";
+import en from "../../../locales/en/en";
+import hr from "../../../locales/hr/hr";
+
 export default function LeaguesMatches({ id }) {
+  const router = useRouter();
+  const { locale } = router;
+  const t = locale === "en" ? en : hr;
+
   const [eventPage, setEventPage] = useState(0);
   console.log(eventPage);
   const {
@@ -55,8 +63,10 @@ export default function LeaguesMatches({ id }) {
           </IcoBlue>
         </ChangePageBtn>
         <FlexVer>
-          <h2>Matches</h2>
-          <div>page: {eventPage}</div>
+          <h2>{t.matches}</h2>
+          <div>
+            {t.page}: {eventPage}
+          </div>
         </FlexVer>
         <ChangePageBtn onClick={pageNext}>
           <IcoBlue

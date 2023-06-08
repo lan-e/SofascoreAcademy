@@ -1,9 +1,24 @@
 import React, { useContext } from "react";
-import { StyledLink, FlexHor, FlexBtw, FlexVer, IcoBW } from "../sharedstyles";
+import {
+  StyledLink,
+  FlexHor,
+  FlexBtw,
+  FlexVer,
+  IcoBW,
+  IcoBlue,
+} from "../sharedstyles";
 import { MatchContainer, MatchCell } from "./styles";
 import { VisibleContext } from "../../utils/VisibleContext";
 
+import { useRouter } from "next/router";
+import en from "../../../locales/en/en";
+import hr from "../../../locales/hr/hr";
+
 const Event = () => {
+  const router = useRouter();
+  const { locale } = router;
+  const t = locale === "en" ? en : hr;
+
   const { setVisible, showEventWindow } = useContext(VisibleContext);
 
   const handleClick = () => {
@@ -34,8 +49,8 @@ const Event = () => {
 
         <StyledLink href="/event">
           <FlexHor>
-            View Full Page
-            <IcoBW
+            {t.fullPage}
+            <IcoBlue
               width="24"
               height="24"
               viewBox="0 0 24 24"
@@ -50,7 +65,7 @@ const Event = () => {
                   <path fill="#fff" d="M0 0h24v24H0z" />
                 </clipPath>
               </defs>
-            </IcoBW>
+            </IcoBlue>
           </FlexHor>
         </StyledLink>
       </FlexBtw>

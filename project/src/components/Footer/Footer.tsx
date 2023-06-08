@@ -3,7 +3,15 @@ import Link from "next/link";
 import { IcoBW } from "../sharedstyles";
 import { FooterStlyed, FooterContent } from "./styles";
 
+import { useRouter } from "next/router";
+import en from "../../../locales/en/en";
+import hr from "../../../locales/hr/hr";
+
 const Footer = () => {
+  const router = useRouter();
+  const { locale } = router;
+  const t = locale === "en" ? en : hr;
+
   return (
     <FooterStlyed>
       <Link href="/">
@@ -28,7 +36,7 @@ const Footer = () => {
           </defs>
         </IcoBW>
       </Link>
-      <FooterContent>© 2023 Sofascore – All Rights Reserved.</FooterContent>
+      <FooterContent>© 2023 Sofascore – {t.rights}.</FooterContent>
     </FooterStlyed>
   );
 };

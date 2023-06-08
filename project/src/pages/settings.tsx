@@ -27,16 +27,32 @@ import {
   LangTitle,
 } from "@/modules/Settings/styles";
 
-export default function settings({ toggleTheme, isDarkTheme }) {
-  const [isToggled, setIsToggled] = useState(isDarkTheme);
+import en from "../../locales/en/en";
+import hr from "../../locales/hr/hr";
+//language switch
+import { useRouter } from "next/router";
+import { GetStaticProps } from "next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useTranslation } from "react-i18next";
 
+function settings({ toggleTheme, isDarkTheme }) {
+  //language
+  const router = useRouter();
+  const { locale } = router;
+  const t = locale === "en" ? en : hr;
+
+  const handleLang = (e) => {
+    const locale = e.target.value;
+    router.push(router.pathname, router.asPath, { locale });
+  };
+  //theme
+  const [isToggled, setIsToggled] = useState(isDarkTheme);
   const onToggle = () => {
     setIsToggled(!isToggled);
     toggleTheme();
   };
 
   function changeDate() {}
-
   return (
     <>
       <Head>
@@ -46,13 +62,13 @@ export default function settings({ toggleTheme, isDarkTheme }) {
         <Leagues />
         <SettingsContainer>
           <Cont>
-            <Title>Settings</Title>
+            <Title>{t.settings}</Title>
           </Cont>
           <SelectLang>
-            <LangTitle>Language</LangTitle>
-            <Select>
-              <option>English</option>
-              <option>Croatian</option>
+            <LangTitle>{t.lang}</LangTitle>
+            <Select onChange={handleLang} defaultValue={locale}>
+              <option value="en">EN</option>
+              <option value="hr">HR</option>
             </Select>
             <SelectPointer
               width="24"
@@ -72,9 +88,9 @@ export default function settings({ toggleTheme, isDarkTheme }) {
             </SelectPointer>
           </SelectLang>
           <GreyCont>
-            <BlueTitle>Theme</BlueTitle>
+            <BlueTitle>{t.theme}</BlueTitle>
             <Theme>
-              <div>Light/Dark</div>
+              <div>{t.themeChange}</div>
               <label className="switch">
                 <input
                   type="checkbox"
@@ -86,7 +102,7 @@ export default function settings({ toggleTheme, isDarkTheme }) {
             </Theme>
           </GreyCont>
           <GreyCont>
-            <BlueTitle>Date Format</BlueTitle>
+            <BlueTitle>{t.dateChange}</BlueTitle>
             <form>
               <Theme>
                 <div>DD / MM / YYYY</div>
@@ -113,15 +129,15 @@ export default function settings({ toggleTheme, isDarkTheme }) {
             </form>
           </GreyCont>
           <GreyCont>
-            <Title>About</Title>
+            <Title>{t.about}</Title>
             <Subtitle>
               <h4>Sofascore Frontend Academy</h4>
-              <div>Class 2023</div>
+              <div>{t.class23}</div>
             </Subtitle>
             <Hr />
-            <GreyTitle>App Name</GreyTitle>
+            <GreyTitle>{t.appName}</GreyTitle>
             <BottomText>Mini Sofascore App</BottomText>
-            <GreyTitle>API Credit</GreyTitle>
+            <GreyTitle>{t.apiCredit}</GreyTitle>
             <Link href="https://corporate.sofascore.com/hr/" target="_blank">
               <BottomText>Sofascore</BottomText>
             </Link>
@@ -160,3 +176,5 @@ export default function settings({ toggleTheme, isDarkTheme }) {
     </>
   );
 }
+
+export default settings;

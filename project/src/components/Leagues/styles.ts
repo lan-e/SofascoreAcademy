@@ -36,6 +36,7 @@ export const MatchesCont = styled(FlexHor)`
   }
 `;
 export const ChangePageBtn = styled.button`
+  height: 40px;
   border:0;
   border-radius: 2px;
   outline:2px solid ${({ theme }) => theme.colors.primary};;

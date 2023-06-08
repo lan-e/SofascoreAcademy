@@ -6,8 +6,17 @@ import OneLeague from "./OneLeague";
 import { LeagueContainer, LoadMoreBtn } from "./styles";
 import { SportContext } from "../../utils/SportProvider";
 import { BulletList } from "react-content-loader";
-//{ tournament }
+
+import { useRouter } from "next/router";
+import en from "../../../locales/en/en";
+import hr from "../../../locales/hr/hr";
+
 const Leagues = () => {
+  //language
+  const router = useRouter();
+  const { locale } = router;
+  const t = locale === "en" ? en : hr;
+
   const { selectedSport, setSport } = useContext(SportContext);
   const {
     data: leagues,
@@ -26,11 +35,11 @@ const Leagues = () => {
 
   return (
     <LeagueContainer>
-      <h2>Leagues</h2>
+      <h2>{t.leagueTitle}</h2>
       <OneLeague leagues={leagues} />
 
       <Link href="/tournament">
-        <LoadMoreBtn>View More</LoadMoreBtn>
+        <LoadMoreBtn>{t.viewMore}</LoadMoreBtn>
       </Link>
     </LeagueContainer>
   );

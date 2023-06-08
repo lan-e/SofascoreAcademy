@@ -3,7 +3,16 @@ import { DateContext } from "../../utils/DateProvider";
 import { StyledDate, DateContainer } from "./styles";
 import { FlexVer } from "../sharedstyles";
 
+import { useRouter } from "next/router";
+import en from "../../../locales/en/en";
+import hr from "../../../locales/hr/hr";
+
 export default function DateNav() {
+  //language
+  const router = useRouter();
+  const { locale } = router;
+  const t = locale === "en" ? en : hr;
+
   const [selectedDate, setSelectedDate] = useContext(DateContext);
 
   //DATE FOR FETCHING
@@ -42,7 +51,7 @@ export default function DateNav() {
         className={selectedDate === formattedYesterday ? "active" : ""}
       >
         <FlexVer>
-          <div>Yesterday</div>
+          <div>{t.yesterday}</div>
           {formattedDateUIYs}
         </FlexVer>
       </StyledDate>
@@ -51,7 +60,7 @@ export default function DateNav() {
         className={selectedDate === formattedDate ? "active" : ""}
       >
         <FlexVer>
-          <div>Today</div>
+          <div>{t.today}</div>
           {formattedDateUI}
         </FlexVer>
       </StyledDate>
@@ -60,7 +69,7 @@ export default function DateNav() {
         className={selectedDate === formattedTomorrow ? "active" : ""}
       >
         <FlexVer>
-          <div>Tomorrow</div>
+          <div>{t.tomorrow}</div>
           {formattedDateUITom}
         </FlexVer>
       </StyledDate>

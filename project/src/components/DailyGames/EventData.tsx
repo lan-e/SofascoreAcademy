@@ -6,11 +6,24 @@ import { VisibleContext } from "../../utils/VisibleContext";
 import Link from "next/link";
 import MatchesData from "./MatchesData";
 
+import { useRouter } from "next/router";
+import en from "../../../locales/en/en";
+import hr from "../../../locales/hr/hr";
+
 export function DailyEvents({ count }) {
+  const router = useRouter();
+  const { locale } = router;
+  const t = locale === "en" ? en : hr;
+
+  const addLetterA = locale === "hr" && count !== 1;
+  const addLetterS = locale === "en" && count !== 1;
   return (
     <DailyGamesHeader style={{ padding: "0 16px" }}>
-      Today
-      <div>{count} Events</div>
+      {t.today}
+      <div>
+        {count}{" "}
+        {addLetterA ? t.events + "a" : addLetterS ? t.events + "s" : t.events}
+      </div>
     </DailyGamesHeader>
   );
 }

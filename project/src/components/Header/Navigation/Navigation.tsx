@@ -3,12 +3,26 @@ import { useEffect, useState, useContext } from "react";
 import { NavStlyed, NavLink, StyledImg } from "./styles";
 import { SportContext } from "@/utils/SportProvider";
 
+import { useRouter } from "next/router";
+import en from "../../../../locales/en/en";
+import hr from "../../../../locales/hr/hr";
+
 export default function Navigation() {
-  const [text, setText] = useState("American Football");
+  //language
+  const router = useRouter();
+  const { locale } = router;
+  const t = locale === "en" ? en : hr;
+
+  //american football --> am.football on mobile
+  const amFoot = t.amFoot;
+  const americanFoot = t.americanFoot;
+
+  const [text, setText] = useState(americanFoot);
+
   function ChangeText() {
-    if (window.innerWidth < 991) setText("Am. Football");
+    if (window.innerWidth < 991) setText(amFoot);
     else {
-      setText("American Football");
+      setText(americanFoot);
     }
   }
   useEffect(() => {
@@ -41,7 +55,7 @@ export default function Navigation() {
           height="100"
           alt="footballico"
         />
-        Football
+        {t.football}
       </NavLink>
       <NavLink
         href="/"
@@ -54,7 +68,7 @@ export default function Navigation() {
           height="100"
           alt="footballico"
         />
-        Basketball
+        {t.basketball}
       </NavLink>
       <NavLink
         href="/"
@@ -68,11 +82,6 @@ export default function Navigation() {
           alt="footballico"
         />
         {text}
-        {/* {typeof window !== "undefined" && window.innerWidth < 991 ? (
-          <div>Am. Football</div>
-        ) : (
-          <div>American Football</div>
-        )} */}
       </NavLink>
     </NavStlyed>
   );

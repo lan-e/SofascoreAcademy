@@ -6,6 +6,16 @@ import { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme } from "../../themes";
 import GlobalStyle from "../components/globalstyles";
 
+import { appWithTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { GetStaticProps } from "next";
+
+// export const getStaticProps: GetStaticProps = async ({ locale }) => ({
+//   props: {
+//     ...(await serverSideTranslations(locale, ["common"])),
+//   },
+// });
+
 //@ts-ignore
 const fetcher = (...args) =>fetch(...args).then((res) => {
     if (res.ok) {
@@ -39,4 +49,10 @@ function App({ Component, pageProps }: AppProps) {
     </>
   );
 }
-export default App;
+export default appWithTranslation(App);
+
+// export const getStaticProps: GetStaticProps = async ({ locale }) => ({
+//   props: {
+//     ...(await serverSideTranslations(locale, ["common"])),
+//   },
+// });

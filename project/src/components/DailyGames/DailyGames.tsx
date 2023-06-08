@@ -6,6 +6,7 @@ import { DateContext } from "../../utils/DateProvider";
 import { LoadingContainer, FlexVer } from "../sharedstyles";
 import { DailyGamesContainer, Desktop, Mobile, DailyGameCell } from "./styles";
 import { BulletList } from "react-content-loader";
+import { PulseLoading } from "../LoadingScreen";
 
 export default function DailyGames() {
   const { selectedSport } = useContext(SportContext);
@@ -39,11 +40,10 @@ export default function DailyGames() {
   //     mutate();
   //   }
   // }, [selectedDate]);
-  if (!matches) {
+  if (isLoading || !matches) {
     return (
       <LoadingContainer>
-        <BulletList />
-        <BulletList />
+        <PulseLoading />
       </LoadingContainer>
     );
   }
