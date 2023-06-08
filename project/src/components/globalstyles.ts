@@ -7,7 +7,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: Roboto;
     background-color: ${({ theme }) => theme.colors.surface};
     user-select: none;
-    transition: all 0.15s ease;
+    /* transition: all 0.15s ease; */
     @media (max-width: 991px) {
     overflow-x: hidden;
   }

@@ -3,46 +3,102 @@ import useSWR from "swr";
 import Head from "next/head";
 import Link from "next/link";
 import Leagues from "@/components/Leagues/Leagues";
-import { Container, Main } from "@/components/sharedstyles";
-// import useFetchData from "@/components/useFetchData";
+import {
+  BlackTitle,
+  Container,
+  FlexBtw,
+  FlexHor,
+  FlexSpace,
+  FlexVer,
+  FlexVerLeft,
+  Main,
+  PlayerImg,
+  StyledStats,
+  TeamImg,
+  TopContainer,
+} from "@/components/sharedstyles";
+import PlayerMatches from "@/components/Player/PlayerMatches";
 
-// export const getStaticProps = async () => {
-//   const data = await (
-//     await fetch(`https://jsonplaceholder.typicode.com/users`)
-//   ) //test
-//     .json();
-//   return {
-//     props: { player: data },
-//   };
-// };
-//const PlayerPage = ({ player }) => {
+import { useRouter } from "next/router";
+import en from "../../../locales/en/en";
+import hr from "../../../locales/hr/hr";
+import LeaguesMatches from "@/components/Leagues/LeaguesMatches";
+import { MatchesCont } from "@/components/Leagues/styles";
+import Event from "@/components/EventWindow/Event";
+import { GreyTitle } from "@/components/settingsStyles";
 
 const PlayerPage = () => {
-  // const { data } = useFetchData(`https://jsonplaceholder.typicode.com/users`);
-  const { data, error, isLoading } = useSWR(
-    `https://jsonplaceholder.typicode.com/users`
-  );
+  const router = useRouter();
+  const { locale } = router;
+  const t = locale === "en" ? en : hr;
+  const id = 27;
+  const {
+    data: player,
+    error,
+    isLoading,
+  } = useSWR(`https://academy.dev.sofascore.com/player/${id}`);
 
-  if (!data) {
+  if (!player) {
     return null;
   }
+
+  const currentDate = player.dateOfBirth;
+  const formattedDate = currentDate.slice(0, 10);
+  const currentYear = new Date().getFullYear();
+  const age = currentYear - formattedDate.slice(0, 4);
   return (
     <>
       <Head>
-        <title>Mini Sofascore | Player</title>
+        <title>Mini Sofascore | {t.player}</title>
       </Head>
       <Main>
         <Leagues />
-        <Container>
-          <h1>Players</h1>
-          {data &&
-            data.map((player: any) => (
-              <Link href={`/player/${player.id}`} key={player.id}>
-                {player.name}
-              </Link>
-            ))}
-          {/* <PlayerContainer>{player.data}</PlayerContainer> */}
-        </Container>
+        <FlexVer>
+          <TopContainer>
+            <div>
+              <FlexVerLeft>
+                <FlexHor>
+                  <PlayerImg
+                    src={`https://academy.dev.sofascore.com/player/${id}/image`}
+                    alt="leagueico"
+                  />
+                  <h1>{player.name}</h1>
+                </FlexHor>
+                <FlexHor style={{ height: "56px" }}>
+                  <BlackTitle>
+                    <FlexHor>
+                      <TeamImg
+                        src={`https://academy.dev.sofascore.com/team/${player.team.id}/image`}
+                        alt="leagueico"
+                      />
+                      <div>{player.team.name}</div>
+                    </FlexHor>
+                  </BlackTitle>
+                </FlexHor>
+              </FlexVerLeft>
+              <FlexSpace>
+                <StyledStats>
+                  <GreyTitle>Country</GreyTitle>
+                  <BlackTitle>{player.country.name}</BlackTitle>
+                </StyledStats>
+                <StyledStats>
+                  <GreyTitle>Position</GreyTitle>
+                  <BlackTitle>{player.position}</BlackTitle>
+                </StyledStats>
+                <StyledStats>
+                  <GreyTitle>{formattedDate}</GreyTitle>
+                  <BlackTitle>{age} Yrs</BlackTitle>
+                </StyledStats>
+              </FlexSpace>
+            </div>
+          </TopContainer>
+          <MatchesCont>
+            <Container>
+              <PlayerMatches id={id} />
+            </Container>
+            <Event />
+          </MatchesCont>
+        </FlexVer>
       </Main>
     </>
   );

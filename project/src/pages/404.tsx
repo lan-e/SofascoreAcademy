@@ -45,5 +45,5 @@ const NotFound = () => {
 
 export default NotFound;
 const Container404 = styled(Container)`
-  width: 100vw;
+  width: 100%;
 `;

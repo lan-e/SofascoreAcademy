@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Image from "next/image";
 
 export const HeaderStlyed = styled.div`
   z-index:1;
@@ -17,23 +16,29 @@ export const HeaderStlyed = styled.div`
     padding-top: 12px;
   }
 `;
-export const SettingsIco = styled(Image)`
+export const SettingsIco = styled.svg`
   position: absolute;
   right: 24px;
   width: 24px;
   height: 24px;
-  filter: invert(97%) sepia(44%) saturate(0%) hue-rotate(277deg)
-    brightness(106%) contrast(100%);
+  fill:#fff;
 `;
-export const MobileMatchIco = styled(Image)`
+export const MobileMatchIco = styled.svg`
   position: absolute;
   right: 48px;
   width: 24px;
   height: 24px;
-  filter: invert(97%) sepia(44%) saturate(0%) hue-rotate(277deg)
-    brightness(106%) contrast(100%);
+  fill: #fff;
   margin-right: 24px;
   @media (min-width: 991px) {
     display: none;
+  }
+`;
+export const IcoWhite = styled.svg`
+fill:#fff;
+margin-right:4px;
+@media (max-width: 991px) {
+margin-right:0;
+margin-bottom:4px;
   }
 `;

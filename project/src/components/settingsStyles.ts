@@ -72,4 +72,5 @@ export const Theme = styled(FlexBtw)`
 `;
 export const Input = styled.input`
   font-size: 24px;
+  cursor:pointer;
 `;

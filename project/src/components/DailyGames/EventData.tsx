@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { FlexHor } from "../sharedstyles";
+import { FlexHor, IcoBW } from "../sharedstyles";
 import { DailyGameCell, DailyGamesHeader, DailyGameText } from "./styles";
 import Image from "next/image";
 import { VisibleContext } from "../../utils/VisibleContext";
@@ -62,17 +62,30 @@ export function EventData({ matches }) {
                   alt="leagueico"
                 />
                 {league.country.name}
-                <Image
-                  src="img/ic_pointer_right.svg"
-                  width="20"
-                  height="20"
-                  alt="pointright"
-                />
+                <IcoBW
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g clip-path="url(#ljqjr1j9oa)">
+                    <path d="m10 17 5-5-5-5v10z" fill-opacity=".4" />
+                  </g>
+                  <defs>
+                    <clipPath id="ljqjr1j9oa">
+                      <path
+                        fill="#fff"
+                        transform="rotate(-90 12 12)"
+                        d="M0 0h24v24H0z"
+                      />
+                    </clipPath>
+                  </defs>
+                </IcoBW>
                 {league.name}
               </FlexHor>
             </Link>
           </DailyGameText>
-          {/* <MatchDetails id={6756} /> */}
           <MatchesData matches={matches} />
         </DailyGameCell>
       ))}

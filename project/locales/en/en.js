@@ -11,18 +11,24 @@ export default {
   tomorrow: "Tomorrow",
   //Event
   fullPage: "View Full Page",
+  playerPage: "Players",
+  teamPage: "Team",
   //EventData
   events: "Event",
+  //EventPage
+  event: "Event",
+  //TeamPage
+  team: "Team",
+  //PlayerPage
+  player: "Player",
   //Navigation
   football: "Football",
   basketball: "Basketball",
   americanFoot: "American Football",
   amFoot: "Am. Football",
-  //Neagues/Tournament
+  //Leagues/Tournament
   leagueTitle: "Leagues",
   viewMore: "View More",
-  //Matches
-
   //Settings
   settings: "Settings",
   lang: "Language",

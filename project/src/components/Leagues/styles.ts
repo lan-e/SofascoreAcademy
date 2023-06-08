@@ -35,12 +35,3 @@ export const MatchesCont = styled(FlexHor)`
     margin: 0;
   }
 `;
-export const ChangePageBtn = styled.button`
-  height: 40px;
-  border:0;
-  border-radius: 2px;
-  outline:2px solid ${({ theme }) => theme.colors.primary};;
-  background-color: transparent;
-  padding: 8px 16px;
-  cursor:pointer;
-`

@@ -5,14 +5,22 @@ export default {
   //LeagueMatches
   matches: "Utakmice",
   page: "stranica",
-  //FateNav
+  //DateNav
   yesterday: "Jučer",
   today: "Danas",
   tomorrow: "Sutra",
   //Event
   fullPage: "Prikaži utakmicu",
+  playerPage: "Igrači",
+  teamPage: "Tim",
   //EventData
   events: "događaj",
+  //EventPage
+  event: "Utakmica",
+  //TeamPage
+  team: "Tim",
+  //PlayerPage
+  player: "Igrač",
   //Navigation
   football: "Nogomet",
   basketball: "Košarka",

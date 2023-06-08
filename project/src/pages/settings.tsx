@@ -25,7 +25,7 @@ import {
   SelectLang,
   SelectPointer,
   LangTitle,
-} from "@/modules/Settings/styles";
+} from "@/components/settingsStyles";
 
 import en from "../../locales/en/en";
 import hr from "../../locales/hr/hr";
@@ -56,7 +56,7 @@ function settings({ toggleTheme, isDarkTheme }) {
   return (
     <>
       <Head>
-        <title>Mini Sofascore | Settings</title>
+        <title>Mini Sofascore | {t.settings}</title>
       </Head>
       <Main>
         <Leagues />
@@ -67,8 +67,8 @@ function settings({ toggleTheme, isDarkTheme }) {
           <SelectLang>
             <LangTitle>{t.lang}</LangTitle>
             <Select onChange={handleLang} defaultValue={locale}>
-              <option value="en">EN</option>
-              <option value="hr">HR</option>
+              <option value="en">English</option>
+              <option value="hr">Hrvatski</option>
             </Select>
             <SelectPointer
               width="24"

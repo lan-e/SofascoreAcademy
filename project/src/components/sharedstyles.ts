@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -58,8 +57,8 @@ const FlexVerLeft = styled.div`
 `;
 const TopContainer = styled.div`
   display: flex;
+    height:max-content;
   align-items: center;
-  height: 160px;
   width: 70vw;
   background-color:${({ theme }) => theme.colors.surface1};
   border-radius: 16px;
@@ -69,31 +68,27 @@ const TopContainer = styled.div`
   @media (max-width: 991px) {
     width: 80vw;
     margin-top: 48px;
-    /* margin-top: 0; */
     border-radius: 16px;
   }
-  img {
-    border-radius: 4px;
-    height: 57px;
-    padding: 11.4px;
-    height: 80px;
-    border: 1px solid ${({ theme }) => theme.colors.onsurfacelv3};
-    margin-right: 24px;
-  }
 `;
-const Logo = styled(Image)`
-  width: 132px;
-  height: 20px;
-`;
-const LogoWhite = styled(Logo)`
-filter: invert(100%) sepia(29%) saturate(2%) hue-rotate(74deg)
-  brightness(112%) contrast(100%);
-`;
+export const PlayerImg = styled.img`
+  border-radius: 4px;
+  height: 57px;
+  padding: 11.4px;
+  height: 80px;
+  border: 1px solid ${({ theme }) => theme.colors.onsurfacelv3};
+  margin-right: 24px;
+`
+export const TeamImg = styled.img`
+width:40px;
+height:40px;
+margin-right:16px;
+`
 const IcoBlue = styled.svg`
-fill:${({ theme }) => theme.colors.primary};
+  fill:${({ theme }) => theme.colors.primary};
 `;
 const IcoBW = styled.svg`
-fill:${({ theme }) => theme.colors.onsurfacelv1};
+  fill:${({ theme }) => theme.colors.onsurfacelv1};
 `
 const LoadingContainer = styled(Container)`
   border-radius: 0;
@@ -102,9 +97,46 @@ const LoadingContainer = styled(Container)`
   }
 `;
 export const Loader = styled.div`
-display: flex;
-justify-content: center;
-align-items: center;
-width:100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width:100vw;
 `
-export { IcoBlue, LogoWhite, IcoBW, FlexVerLeft, Container, LoadingContainer, Main, FlexHor, FlexVer, FlexBtw,StyledLink, TopContainer };
+export const ChangePageBtn = styled.button`
+  height: 40px;
+  border:0;
+  border-radius: 2px;
+  outline:2px solid ${({ theme }) => theme.colors.primary};
+  background-color: transparent;
+  padding: 8px 16px;
+  cursor:pointer;
+`
+export const StyledStats=styled.div`
+  width:150px;
+  height:56px;
+  margin:0 41px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: ${({ theme }) => theme.colors.secondaryHighlight};
+  @media(max-width: 991px){
+  margin:20px 0;
+}
+`
+export const FlexSpace = styled(FlexHor)`
+width:70vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  @media(max-width: 991px){
+    width:75vw;
+}
+`
+export const BlackTitle = styled.div`
+font-size:14px;
+font-weight: bold;
+color:${({ theme }) => theme.colors.onsurfacelv1};
+`
+export {  FlexVerLeft, Container, LoadingContainer, Main, FlexHor, FlexVer, FlexBtw,StyledLink, TopContainer, IcoBlue, IcoBW };

@@ -3,33 +3,75 @@ import useSWR from "swr";
 import Head from "next/head";
 import Link from "next/link";
 import Leagues from "@/components/Leagues/Leagues";
-import { Container, Main } from "@/components/sharedstyles";
+import {
+  BlackTitle,
+  Container,
+  FlexBtw,
+  FlexHor,
+  FlexSpace,
+  FlexVer,
+  FlexVerLeft,
+  Main,
+  PlayerImg,
+  StyledStats,
+  TeamImg,
+  TopContainer,
+} from "@/components/sharedstyles";
+import PlayerMatches from "@/components/Player/PlayerMatches";
+import { useRouter } from "next/router";
+import en from "../../../locales/en/en";
+import hr from "../../../locales/hr/hr";
+import { GreyTitle } from "@/components/settingsStyles";
+import { MatchesCont } from "@/components/Leagues/styles";
+import Event from "@/components/EventWindow/Event";
 
 const TeamPage = () => {
-  const { data, error, isLoading } = useSWR(
-    `https://jsonplaceholder.typicode.com/users`
-  );
+  const id = 1;
+  const {
+    data: team,
+    error,
+    isLoading,
+  } = useSWR(`https://academy.dev.sofascore.com/team/${id}`);
 
-  if (!data) {
+  if (!team) {
     return null;
   }
+
+  const router = useRouter();
+  const { locale } = router;
+  const t = locale === "en" ? en : hr;
+
   return (
     <>
       <Head>
-        <title>Mini Sofascore | Team</title>
+        <title>Mini Sofascore | {t.team}</title>
       </Head>
       <Main>
         <Leagues />
-        <Container>
-          <h1>Team</h1>
-          {data &&
-            data.map((team: any) => (
-              <Link href={`/team/${team.id}`} key={team.id}>
-                {team.name}
-              </Link>
-            ))}
-          {/* <PlayerContainer>{player.data}</PlayerContainer> */}
-        </Container>
+        <FlexVer>
+          <TopContainer>
+            <div>
+              <FlexVerLeft>
+                <FlexHor>
+                  <PlayerImg
+                    src={`https://academy.dev.sofascore.com/team/${id}/image`}
+                    alt="leagueico"
+                  />
+                  <FlexVerLeft>
+                    <h1>{team.name}</h1>
+                    <div>{team.country.name}</div>
+                  </FlexVerLeft>
+                </FlexHor>
+              </FlexVerLeft>
+            </div>
+          </TopContainer>
+          <MatchesCont>
+            <Container>
+              <PlayerMatches id={id} />
+            </Container>
+            <Event />
+          </MatchesCont>
+        </FlexVer>
       </Main>
     </>
   );

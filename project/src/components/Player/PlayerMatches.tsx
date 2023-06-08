@@ -14,7 +14,7 @@ import { useRouter } from "next/router";
 import en from "../../../locales/en/en";
 import hr from "../../../locales/hr/hr";
 
-export default function LeaguesMatches({ id }) {
+export default function PlayerMatches({ id }) {
   const router = useRouter();
   const { locale } = router;
   const t = locale === "en" ? en : hr;
@@ -26,7 +26,7 @@ export default function LeaguesMatches({ id }) {
     error,
     isLoading,
   } = useSWR(
-    `https://academy.dev.sofascore.com/tournament/${id}/events/next/${eventPage}`
+    `https://academy.dev.sofascore.com/player/${id}/events/next/${eventPage}`
   );
   if (!matches) {
     return (
@@ -92,10 +92,7 @@ export default function LeaguesMatches({ id }) {
           </IcoBlue>
         </ChangePageBtn>
       </FlexBtw>
-      {/* <StyledLink href={`/event`}> */}
-      {/* <EventData id={6756} /> */}
       <MatchesData matches={matches} />
-      {/* </StyledLink> */}
     </>
   );
 }
