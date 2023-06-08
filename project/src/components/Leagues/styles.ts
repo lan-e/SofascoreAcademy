@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { FlexHor } from "../sharedstyles";
 
 export const LeagueContainer = styled.div`
   margin: 0 12px;
@@ -16,7 +17,6 @@ export const LeagueContainer = styled.div`
     display: none;
   }
 `;
-
 export const LoadMoreBtn = styled.div`
   font-size: 16px;
   font-weight: bold;
@@ -28,3 +28,18 @@ export const FlexHorNew = styled.div`
   align-items: center;
   height: 56px;
 `;
+export const MatchesCont = styled(FlexHor)`
+  margin-top: 16px;
+  width: 71vw;
+  @media (max-width: 991px) {
+    margin: 0;
+  }
+`;
+export const ChangePageBtn = styled.button`
+  border:0;
+  border-radius: 2px;
+  outline:2px solid ${({ theme }) => theme.colors.primary};;
+  background-color: transparent;
+  padding: 8px 16px;
+  cursor:pointer;
+`

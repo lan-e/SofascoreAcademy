@@ -1,8 +1,16 @@
 import React from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { FlexVer, Main, TopContainer } from "@/components/sharedstyles";
+import {
+  Container,
+  FlexVer,
+  Main,
+  TopContainer,
+} from "@/components/sharedstyles";
+import Event from "@/components/EventWindow/Event";
 import Leagues from "@/components/Leagues/Leagues";
+import { MatchesCont } from "@/components/Leagues/styles";
+import LeaguesMatches from "@/components/Leagues/LeaguesMatches";
 
 export const getStaticPaths = async () => {
   const response = await fetch(`https://jsonplaceholder.typicode.com/users`);
@@ -40,6 +48,7 @@ const Details = ({ player }) => {
       </Head>
       <Main>
         <Leagues />
+        {/* <FlexVer> */}
         <TopContainer>
           <FlexVer>
             <h1>Player: {id}</h1>
@@ -49,6 +58,13 @@ const Details = ({ player }) => {
             <p>{player.address.city}</p>
           </FlexVer>
         </TopContainer>
+        {/* <MatchesCont>
+            <Container>
+              <LeaguesMatches id={id} />
+            </Container>
+            <Event />
+          </MatchesCont> */}
+        {/* </FlexVer> */}
       </Main>
     </>
   );

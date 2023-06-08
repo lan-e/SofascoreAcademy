@@ -1,18 +1,10 @@
 import React, { useContext } from "react";
-import { FlexHor, FlexVer } from "../sharedstyles";
-import {
-  DailyGameCell,
-  DailyGamesHeader,
-  Vl,
-  Time,
-  DailyGameEach,
-  FlexBtwNew,
-  Teams,
-  DailyGameText,
-} from "./styles";
+import { FlexHor } from "../sharedstyles";
+import { DailyGameCell, DailyGamesHeader, DailyGameText } from "./styles";
 import Image from "next/image";
 import { VisibleContext } from "../../utils/VisibleContext";
 import Link from "next/link";
+import MatchesData from "./MatchesData";
 
 export function DailyEvents({ count }) {
   return (
@@ -68,28 +60,7 @@ export function EventData({ matches }) {
             </Link>
           </DailyGameText>
           {/* <MatchDetails id={6756} /> */}
-          {matches
-            .filter((match) => match.tournament.id === league.id)
-            .map((match) => (
-              <FlexHor key={match.id}>
-                <DailyGameEach>
-                  <DailyGameText>
-                    <Time>{match.startDate.split("T")[1].slice(0, 5)}</Time>
-                    <Vl></Vl>
-                    <FlexBtwNew>
-                      <Teams>
-                        <div>{match.homeTeam.name}</div>
-                        <div>{match.awayTeam.name}</div>
-                      </Teams>
-                      <FlexVer>
-                        <div>{match.homeScore.total}</div>
-                        <div>{match.awayScore.total}</div>
-                      </FlexVer>
-                    </FlexBtwNew>
-                  </DailyGameText>
-                </DailyGameEach>
-              </FlexHor>
-            ))}
+          <MatchesData matches={matches} />
         </DailyGameCell>
       ))}
     </div>

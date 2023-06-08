@@ -5,6 +5,7 @@ import Image from "next/image";
 import OneLeague from "./OneLeague";
 import { LeagueContainer, LoadMoreBtn } from "./styles";
 import { SportContext } from "../../utils/SportProvider";
+import { BulletList } from "react-content-loader";
 //{ tournament }
 const Leagues = () => {
   const { selectedSport, setSport } = useContext(SportContext);
@@ -18,12 +19,7 @@ const Leagues = () => {
   if (!leagues) {
     return (
       <LeagueContainer>
-        <Image
-          src="img/ic_loading.svg"
-          width="20"
-          height="20"
-          alt="pointright"
-        />
+        <BulletList />
       </LeagueContainer>
     );
   }

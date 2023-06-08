@@ -1,11 +1,12 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import useSWR from "swr";
 import { EventData, DailyEvents } from "./EventData";
 import { SportContext } from "../../utils/SportProvider";
 import { DateContext } from "../../utils/DateProvider";
-import { Container, FlexVer } from "../sharedstyles";
+import { LoadingContainer, FlexVer } from "../sharedstyles";
 import { DailyGamesContainer, Desktop, Mobile, DailyGameCell } from "./styles";
-import Image from "next/image";
+import { BulletList } from "react-content-loader";
+
 export default function DailyGames() {
   const { selectedSport } = useContext(SportContext);
   const { selectedDate } = useContext(DateContext);
@@ -27,9 +28,9 @@ export default function DailyGames() {
     isLoading,
     // mutate,
   } = useSWR(
-    // `https://academy.dev.sofascore.com/sport/${selectedSport}/events/2023-04-01`
+    `https://academy.dev.sofascore.com/sport/${selectedSport}/events/2023-04-01`
     // formattedDate
-    `https://academy.dev.sofascore.com/sport/${selectedSport}/events/${formattedDate}`
+    // `https://academy.dev.sofascore.com/sport/${selectedSport}/events/${formattedDate}`
     //   : null
     // ,{ refreshInterval: 10000 }
   );
@@ -40,14 +41,10 @@ export default function DailyGames() {
   // }, [selectedDate]);
   if (!matches) {
     return (
-      <Container>
-        <Image
-          src="img/ic_loading.svg"
-          width="20"
-          height="20"
-          alt="pointright"
-        />
-      </Container>
+      <LoadingContainer>
+        <BulletList />
+        <BulletList />
+      </LoadingContainer>
     );
   }
   const count = matches?.length;

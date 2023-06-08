@@ -13,7 +13,8 @@ const Container = styled.div`
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
-  align-items: center; box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.08);
+  align-items: center;
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.08);
   @media (max-width: 991px) {
     margin-top: 48px;
     width: 80vw;
@@ -47,6 +48,7 @@ const FlexBtw=styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width:100%;
 `
 const FlexVerLeft = styled.div`
   display: flex;
@@ -58,7 +60,7 @@ const TopContainer = styled.div`
   display: flex;
   align-items: center;
   height: 160px;
-  width: 60vw;
+  width: 70vw;
   background-color:${({ theme }) => theme.colors.surface1};
   border-radius: 16px;
   padding: 16px;
@@ -93,4 +95,16 @@ fill:${({ theme }) => theme.colors.primary};
 const IcoBW = styled.svg`
 fill:${({ theme }) => theme.colors.onsurfacelv1};
 `
-export { IcoBlue, LogoWhite, IcoBW, FlexVerLeft, Container, Main, FlexHor, FlexVer, FlexBtw,StyledLink,TopContainer };
+const LoadingContainer = styled(Container)`
+  border-radius: 0;
+  @media (max-width: 991px) {
+    border-radius: 16px;
+  }
+`;
+export const Loader = styled.div`
+display: flex;
+justify-content: center;
+align-items: center;
+width:100vw;
+`
+export { IcoBlue, LogoWhite, IcoBW, FlexVerLeft, Container, LoadingContainer, Main, FlexHor, FlexVer, FlexBtw,StyledLink, TopContainer };

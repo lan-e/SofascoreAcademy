@@ -12,6 +12,10 @@ export default function Layout({ children }) {
         <title>Mini Sofascore</title>
         <meta name="description" content="Mini Sofascore" />
         <link rel="icon" href="/favicon.ico" />
+        <link
+          href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
+          rel="stylesheet"
+        ></link>
       </Head>
       <SportProvider>
         <DateProvider>
