@@ -1,12 +1,10 @@
 import React from "react";
 import useSWR from "swr";
 import Head from "next/head";
-import Link from "next/link";
 import Leagues from "@/components/Leagues/Leagues";
 import {
   BlackTitle,
   Container,
-  FlexBtw,
   FlexHor,
   FlexSpace,
   FlexVer,
@@ -17,15 +15,14 @@ import {
   TeamImg,
   TopContainer,
 } from "@/components/sharedstyles";
+import { MatchesCont } from "@/components/Leagues/styles";
+import Event from "@/components/EventWindow/Event";
+import { GreyTitle } from "@/components/settingsStyles";
 import PlayerMatches from "@/components/Player/PlayerMatches";
 
 import { useRouter } from "next/router";
 import en from "../../../locales/en/en";
 import hr from "../../../locales/hr/hr";
-import LeaguesMatches from "@/components/Leagues/LeaguesMatches";
-import { MatchesCont } from "@/components/Leagues/styles";
-import Event from "@/components/EventWindow/Event";
-import { GreyTitle } from "@/components/settingsStyles";
 
 const PlayerPage = () => {
   const router = useRouter();

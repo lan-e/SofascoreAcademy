@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { FlexHor, FlexVer } from "../sharedstyles";
+import { FlexHorLeft, FlexHor, FlexVer, TeamLogo } from "../sharedstyles";
 import {
   DailyGameCell,
   Vl,
@@ -28,8 +28,20 @@ const MatchesData = ({ matches }) => {
                 <Vl></Vl>
                 <FlexBtwNew>
                   <Teams>
-                    <div>{match.homeTeam.name}</div>
-                    <div>{match.awayTeam.name}</div>
+                    <FlexHorLeft>
+                      <TeamLogo
+                        src={`https://academy.dev.sofascore.com/team/${match.homeTeam.id}/image`}
+                        alt="leagueico"
+                      />
+                      <div>{match.homeTeam.name}</div>
+                    </FlexHorLeft>
+                    <FlexHorLeft>
+                      <TeamLogo
+                        src={`https://academy.dev.sofascore.com/team/${match.awayTeam.id}/image`}
+                        alt="leagueico"
+                      />
+                      <div>{match.awayTeam.name}</div>
+                    </FlexHorLeft>
                   </Teams>
                   <FlexVer>
                     <div>{match.homeScore.total}</div>

@@ -31,6 +31,7 @@ export const FlexHorNew = styled.div`
 export const MatchesCont = styled(FlexHor)`
   margin-top: 16px;
   width: 71vw;
+  align-items: start;
   @media (max-width: 991px) {
     margin: 0;
   }

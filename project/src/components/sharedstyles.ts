@@ -40,6 +40,9 @@ const FlexHor = styled.div`
   justify-content: center;
   align-items: center;
 `;
+export const FlexHorLeft=styled(FlexHor)`
+  justify-content: start;
+`
 const FlexVer = styled(FlexHor)`
   flex-direction: column;
 `;
@@ -49,15 +52,12 @@ const FlexBtw=styled.div`
   align-items: center;
   width:100%;
 `
-const FlexVerLeft = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: left;
+const FlexVerLeft = styled(FlexVer)`
   align-items: start;
 `;
 const TopContainer = styled.div`
   display: flex;
-    height:max-content;
+  height:max-content;
   align-items: center;
   width: 70vw;
   background-color:${({ theme }) => theme.colors.surface1};
@@ -80,9 +80,14 @@ export const PlayerImg = styled.img`
   margin-right: 24px;
 `
 export const TeamImg = styled.img`
-width:40px;
-height:40px;
-margin-right:16px;
+  width:40px;
+  height:40px;
+  margin-right:16px;
+`
+export const TeamLogo=styled.img`
+  width:16px;
+  height:16px;
+  margin-right:8px;
 `
 const IcoBlue = styled.svg`
   fill:${({ theme }) => theme.colors.primary};
@@ -112,9 +117,8 @@ export const ChangePageBtn = styled.button`
   cursor:pointer;
 `
 export const StyledStats=styled.div`
-  width:150px;
+  width:30%;
   height:56px;
-  margin:0 41px;
   border-radius: 4px;
   display: flex;
   flex-direction: column;
@@ -122,21 +126,23 @@ export const StyledStats=styled.div`
   align-items: center;
   background-color: ${({ theme }) => theme.colors.secondaryHighlight};
   @media(max-width: 991px){
-  margin:20px 0;
+    margin: 0 5px;
 }
 `
 export const FlexSpace = styled(FlexHor)`
-width:70vw;
+  width:70vw;
+  padding-right: 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   @media(max-width: 991px){
     width:75vw;
+    padding:0;
 }
 `
 export const BlackTitle = styled.div`
-font-size:14px;
-font-weight: bold;
-color:${({ theme }) => theme.colors.onsurfacelv1};
+  font-size:14px;
+  font-weight: bold;
+  color:${({ theme }) => theme.colors.onsurfacelv1};
 `
 export {  FlexVerLeft, Container, LoadingContainer, Main, FlexHor, FlexVer, FlexBtw,StyledLink, TopContainer, IcoBlue, IcoBW };

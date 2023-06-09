@@ -1,31 +1,28 @@
 import React from "react";
 import useSWR from "swr";
 import Head from "next/head";
-import Link from "next/link";
 import Leagues from "@/components/Leagues/Leagues";
 import {
-  BlackTitle,
   Container,
-  FlexBtw,
   FlexHor,
-  FlexSpace,
   FlexVer,
   FlexVerLeft,
   Main,
   PlayerImg,
-  StyledStats,
-  TeamImg,
   TopContainer,
 } from "@/components/sharedstyles";
 import PlayerMatches from "@/components/Player/PlayerMatches";
 import { useRouter } from "next/router";
 import en from "../../../locales/en/en";
 import hr from "../../../locales/hr/hr";
-import { GreyTitle } from "@/components/settingsStyles";
 import { MatchesCont } from "@/components/Leagues/styles";
 import Event from "@/components/EventWindow/Event";
 
 const TeamPage = () => {
+  const router = useRouter();
+  const { locale } = router;
+  const t = locale === "en" ? en : hr;
+
   const id = 1;
   const {
     data: team,
@@ -36,10 +33,6 @@ const TeamPage = () => {
   if (!team) {
     return null;
   }
-
-  const router = useRouter();
-  const { locale } = router;
-  const t = locale === "en" ? en : hr;
 
   return (
     <>
