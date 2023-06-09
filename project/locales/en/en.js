@@ -21,6 +21,8 @@ export default {
   team: "Team",
   //PlayerPage
   player: "Player",
+  country: "Country",
+  position: "Position",
   //Navigation
   football: "Football",
   basketball: "Basketball",

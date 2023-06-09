@@ -21,6 +21,8 @@ export default {
   team: "Tim",
   //PlayerPage
   player: "Igrač",
+  country: "Država",
+  position: "Pozicija",
   //Navigation
   football: "Nogomet",
   basketball: "Košarka",

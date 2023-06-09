@@ -75,16 +75,18 @@ const PlayerPage = () => {
               </FlexVerLeft>
               <FlexSpace>
                 <StyledStats>
-                  <GreyTitle>Country</GreyTitle>
+                  <GreyTitle>{t.country}</GreyTitle>
                   <BlackTitle>{player.country.name}</BlackTitle>
                 </StyledStats>
                 <StyledStats>
-                  <GreyTitle>Position</GreyTitle>
+                  <GreyTitle>{t.position}</GreyTitle>
                   <BlackTitle>{player.position}</BlackTitle>
                 </StyledStats>
                 <StyledStats>
                   <GreyTitle>{formattedDate}</GreyTitle>
-                  <BlackTitle>{age} Yrs</BlackTitle>
+                  <BlackTitle>
+                    {age} {locale === "en" ? "Yrs" : "god."}
+                  </BlackTitle>
                 </StyledStats>
               </FlexSpace>
             </div>
