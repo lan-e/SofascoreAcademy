@@ -8,11 +8,11 @@ const Container = styled.div`
   width: 35vw;
   background-color:${({ theme }) => theme.colors.surface1};
   border-radius: 16px;
-  padding: 16px;
+  padding-bottom: 16px; 
   display: flex;
   flex-flow: column nowrap;
-  justify-content: center;
-  align-items: center;
+ /* justify-content: center;
+  align-items: center; */
   box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.08);
   @media (max-width: 991px) {
     margin-top: 48px;
@@ -22,7 +22,7 @@ const Container = styled.div`
 `;
 const Main = styled.main`
   min-height: 820px;
-  padding-top: 160px;
+  padding-top: 160px; 
   padding-bottom: 148px;
   margin: 0 12px;
   display: flex;
@@ -52,6 +52,9 @@ const FlexBtw=styled.div`
   align-items: center;
   width:100%;
 `
+const FlexBtwPadding = styled(FlexBtw)`
+  padding: 16px;
+`;
 const FlexVerLeft = styled(FlexVer)`
   align-items: start;
 `;
@@ -96,7 +99,10 @@ const IcoBW = styled.svg`
   fill:${({ theme }) => theme.colors.onsurfacelv1};
 `
 const LoadingContainer = styled(Container)`
-  border-radius: 0;
+  margin: 0;
+  padding: 16px;
+  border-radius: 16px;
+  box-shadow: 0 0 rgba(0, 0, 0, 0);
   @media (max-width: 991px) {
     border-radius: 16px;
   }
@@ -145,4 +151,4 @@ export const BlackTitle = styled.div`
   font-weight: bold;
   color:${({ theme }) => theme.colors.onsurfacelv1};
 `
-export {  FlexVerLeft, Container, LoadingContainer, Main, FlexHor, FlexVer, FlexBtw,StyledLink, TopContainer, IcoBlue, IcoBW };
+export {  FlexVerLeft, Container, LoadingContainer, Main, FlexHor, FlexVer, FlexBtw, FlexBtwPadding, StyledLink, TopContainer, IcoBlue, IcoBW };
