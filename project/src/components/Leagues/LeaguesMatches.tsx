@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import useSWR from "swr";
 import {
   ChangePageBtn,
-  Container,
-  FlexBtw,
+  FlexBtwPadding,
   FlexVer,
   IcoBlue,
+  LoadingContainer,
 } from "../sharedstyles";
 import { BulletList } from "react-content-loader";
 import MatchesData from "../DailyGames/MatchesData";
@@ -30,11 +30,11 @@ export default function LeaguesMatches({ id }) {
   );
   if (!matches) {
     return (
-      <Container>
+      <LoadingContainer>
         <BulletList />
         <BulletList />
         <BulletList />
-      </Container>
+      </LoadingContainer>
     );
   }
   const count = matches?.length;
@@ -48,7 +48,7 @@ export default function LeaguesMatches({ id }) {
 
   return (
     <>
-      <FlexBtw>
+      <FlexBtwPadding>
         <ChangePageBtn onClick={pagePrev}>
           <IcoBlue
             width="24"
@@ -91,7 +91,7 @@ export default function LeaguesMatches({ id }) {
             </defs>
           </IcoBlue>
         </ChangePageBtn>
-      </FlexBtw>
+      </FlexBtwPadding>
       {/* <StyledLink href={`/event`}> */}
       {/* <EventData id={6756} /> */}
       <MatchesData matches={matches} />
