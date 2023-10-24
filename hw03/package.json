@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@babel/traverse": "7.23.2",
     "jest": "^29.5.0"
   }
 }
